@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bhavini Foundation | Healing Minds, Protecting Lives</title>
+  <meta name="description" content="Bhavini Foundation — a registered NGO combating domestic violence, mental abuse, and human trafficking through clinical care, legal aid, and grassroots advocacy in Uttar Pradesh." />
+  <meta name="keywords" content="NGO India, mental health, domestic violence, POCSO, human trafficking, Uttar Pradesh, Bhavini Foundation" />
+  <meta property="og:title" content="Bhavini Foundation | Healing Minds, Protecting Lives" />
+  <meta property="og:description" content="Join our mission to empower survivors and provide mental health accessibility across India." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/abhishekism/Bhavinifoundation/74fa113e766bc90a5156094f5c4ce8560402632d/dca9536e-bd4d-4399-8d4f-3b2f15fcf831.png" />
+  <meta property="og:url" content="https://abhishekism.github.io/Bhavini/" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abhishekism/Bhavinifoundation/74fa113e766bc90a5156094f5c4ce8560402632d/dca9536e-bd4d-4399-8d4f-3b2f15fcf831.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans:  ['Nunito', 'sans-serif'],
+          },
+          colors: {
+            sage:  { 50:'#f2f5f0',100:'#e2e9de',200:'#c4d3bc',300:'#9db890',400:'#739f68',500:'#547a4a',600:'#3f5e38',700:'#324a2c',800:'#273b23',900:'#1a271a' },
+            terra: { 50:'#fdf4ef',100:'#fbe4d3',200:'#f6c9a7',300:'#f0a472',400:'#e87b44',500:'#d95f25',600:'#b8481a',700:'#923716' },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; background: #faf6f0; color: #1a271a; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
+
+    /* Hero */
+    .hero-bg {
+      background:
+        linear-gradient(160deg, rgba(10,22,8,.78) 0%, rgba(30,45,18,.55) 50%, rgba(55,28,10,.75) 100%),
+        url('https://images.unsplash.com/photo-1763735134124-b1bb75f5386e?q=80&w=1166&auto=format&fit=crop') center 40%/cover no-repeat fixed;
+    }
+
+    /* Cards */
+    .card { background:#fff; border:1px solid #e2e9de; border-radius:24px; transition: transform .3s ease, box-shadow .3s ease; }
+    .card:hover { transform:translateY(-6px); box-shadow:0 20px 48px rgba(26,39,26,.10); }
+
+    /* Cause top bar */
+    .bar-sage::before  { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:#9db890; border-radius:24px 24px 0 0; }
+    .bar-terra::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:#d95f25; border-radius:24px 24px 0 0; }
+    .bar-gold::before  { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:#f0a472; border-radius:24px 24px 0 0; }
+
+    /* Icon box */
+    .icon-box { width:52px; height:52px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+
+    /* Step number */
+    .step-n { font-family:'DM Serif Display',serif; font-size:3.5rem; line-height:1; color:rgba(240,164,114,.3); font-style:italic; }
+
+    /* Photo hover */
+    .photo-wrap { overflow:hidden; border-radius:16px; }
+    .photo-wrap img { transition:transform .5s ease; width:100%; height:100%; object-fit:cover; }
+    .photo-wrap:hover img { transform:scale(1.07); }
+    .photo-cap { position:absolute; inset:0; background:linear-gradient(to top,rgba(26,39,26,.82),transparent 55%); opacity:0; transition:opacity .3s; display:flex; align-items:flex-end; padding:14px 16px; border-radius:16px; }
+    .photo-wrap:hover .photo-cap { opacity:1; }
+
+    /* Testimonial card */
+    .testi-card { background:#fff; border:1px solid #e2e9de; border-radius:20px; padding:28px; position:relative; }
+    .testi-card::before { content:'\201C'; font-family:'DM Serif Display',serif; font-size:5rem; line-height:.7; color:#f0a472; position:absolute; top:16px; left:22px; opacity:.4; }
+
+    /* Progress bars */
+    .prog-bar { height:6px; border-radius:999px; background:#e2e9de; overflow:hidden; }
+    .prog-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,#547a4a,#9db890); width:0; transition:width 1.4s ease; }
+
+    /* Modal */
+    .modal { visibility:hidden; opacity:0; transition:opacity .3s ease, visibility .3s ease; }
+    .modal.open { visibility:visible; opacity:1; }
+
+    /* Amount buttons */
+    .amt-btn { border:2px solid #e2e9de; border-radius:12px; padding:10px 16px; font-weight:700; font-size:.85rem; cursor:pointer; transition:all .2s; background:#fff; color:#324a2c; }
+    .amt-btn:hover, .amt-btn.active { border-color:#d95f25; background:#fdf4ef; color:#d95f25; }
+
+    /* Form inputs */
+    .finput { background:#f2f5f0; border:1.5px solid #e2e9de; border-radius:12px; padding:12px 16px; font-size:.9rem; font-family:'Nunito',sans-serif; color:#1a271a; width:100%; transition:border-color .2s, box-shadow .2s; outline:none; }
+    .finput:focus { border-color:#547a4a; box-shadow:0 0 0 3px rgba(84,122,74,.15); }
+
+    /* Dark form inputs */
+    .dinput { background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.12); border-radius:12px; padding:12px 16px; font-size:.88rem; font-family:'Nunito',sans-serif; color:#fff; width:100%; transition:border-color .2s; outline:none; }
+    .dinput::placeholder { color:rgba(255,255,255,.35); }
+    .dinput:focus { border-color:#9db890; }
+    .dinput option { background:#273b23; color:#fff; }
+
+    /* Pill badge */
+    .badge { display:inline-flex; align-items:center; gap:6px; padding:5px 14px; border-radius:999px; font-size:.65rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-thumb { background:#9db890; border-radius:4px; }
+
+    /* Sticky nav shadow */
+    .nav-shadow { box-shadow:0 2px 24px rgba(26,39,26,.10); }
+
+    /* Partner logo row */
+    .partner-logo { height:36px; opacity:.45; filter:grayscale(1); transition:opacity .3s, filter .3s; }
+    .partner-logo:hover { opacity:1; filter:grayscale(0); }
+
+    /* Success story card */
+    .story-card { border-radius:24px; position:relative; }
+
+    /* Credibility badge */
+    .cred-badge { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:10px 14px; font-size:.75rem; font-weight:700; }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav id="mainNav" class="sticky top-0 z-50 border-b border-sage-100 transition-shadow duration-300" style="background:rgba(250,246,240,.94);backdrop-filter:blur(18px)">
+  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3 group">
+      <img src="https://raw.githubusercontent.com/abhishekism/Bhavinifoundation/74fa113e766bc90a5156094f5c4ce8560402632d/dca9536e-bd4d-4399-8d4f-3b2f15fcf831.png" alt="Bhavini Foundation" class="h-9 w-9 rounded-full object-cover ring-2 ring-sage-200 group-hover:ring-terra-300 transition-all" />
+      <div>
+        <div class="font-serif text-xl leading-none text-sage-800">Bhavini</div>
+        <div class="text-[9px] font-bold tracking-widest uppercase text-sage-400">Foundation</div>
+      </div>
+    </a>
+    <div class="hidden lg:flex items-center gap-6 text-[11px] font-bold tracking-widest uppercase text-sage-600">
+      <a href="#about"       class="hover:text-terra-500 transition-colors">About</a>
+      <a href="#impact"      class="hover:text-terra-500 transition-colors">Impact</a>
+      <a href="#programs"    class="hover:text-terra-500 transition-colors">Programs</a>
+      <a href="#stories"     class="hover:text-terra-500 transition-colors">Stories</a>
+      <a href="#goals"       class="hover:text-terra-500 transition-colors">Goals</a>
+      <a href="#get-involved" class="hover:text-terra-500 transition-colors">Get Involved</a>
+      <a href="#contact"     class="hover:text-terra-500 transition-colors">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="#donate" class="hidden sm:inline-flex items-center gap-2 bg-sage-700 hover:bg-sage-800 text-white text-[10px] font-black tracking-widest uppercase px-5 py-2.5 rounded-full transition-all shadow-sm hover:shadow-md">
+        <i class="fas fa-heart text-terra-300"></i> Donate
+      </a>
+      <button id="burgerBtn" class="lg:hidden p-2 rounded-lg hover:bg-sage-100 transition-colors">
+        <i class="fas fa-bars text-sage-700"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-sage-100 px-5 py-5 space-y-4" style="background:#faf6f0">
+    <a href="#about"        onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">About</a>
+    <a href="#impact"       onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Impact</a>
+    <a href="#programs"     onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Programs</a>
+    <a href="#stories"      onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Stories</a>
+    <a href="#goals"        onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Goals</a>
+    <a href="#get-involved" onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Get Involved</a>
+    <a href="#contact"      onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Contact</a>
+    <a href="#donate"       onclick="closeMob()" class="block w-full text-center bg-sage-700 text-white text-[10px] font-black tracking-widest uppercase py-3 rounded-full">Donate Now</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero-bg min-h-screen flex flex-col justify-between text-white" id="hero">
+  <div class="flex-1 flex items-center justify-center text-center px-5 py-28">
+    <div class="max-w-3xl">
+      <div class="badge mb-8 mx-auto" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.88)">
+        <span class="w-1.5 h-1.5 rounded-full bg-terra-300 animate-pulse"></span>
+        Registered NGO · Uttar Pradesh · Est. 2024
+      </div>
+      <h1 class="font-serif text-5xl md:text-7xl mb-5 leading-tight">
+        Every Survivor<br />Deserves a <em class="italic" style="color:#f0a472">Safe Tomorrow.</em>
+      </h1>
+      <p class="text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto" style="color:rgba(255,255,255,.78);font-weight:300">
+        Bhavini Foundation stands between a woman and her abuser, a child and their exploiter, a survivor and their silence. We provide mental health care, legal aid, and community protection across Uttar Pradesh.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#donate" class="inline-flex items-center justify-center gap-2 bg-terra-500 hover:bg-terra-600 text-white font-bold text-xs tracking-widest uppercase px-8 py-4 rounded-full transition-all shadow-xl" style="font-weight:800">
+          <i class="fas fa-heart"></i> Donate — Change a Life
+        </a>
+        <a href="#get-involved" class="inline-flex items-center justify-center gap-2 font-bold text-xs tracking-widest uppercase px-8 py-4 rounded-full transition-all border hover:bg-white hover:text-sage-800" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);font-weight:700">
+          <i class="fas fa-hands-helping" style="color:#f0a472"></i> Volunteer With Us
+        </a>
+        <a href="tel:+918448928049" class="inline-flex items-center justify-center gap-2 font-bold text-xs tracking-widest uppercase px-8 py-4 rounded-full transition-all border hover:bg-white hover:text-sage-800" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);font-weight:700">
+          <i class="fas fa-phone-alt" style="color:#f0a472"></i> Helpline
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Stats strip -->
+  <div class="border-t" style="background:rgba(15,25,12,.6);border-color:rgba(255,255,255,.1);backdrop-filter:blur(12px)">
+    <div class="max-w-5xl mx-auto px-5 py-5 grid grid-cols-2 md:grid-cols-4 divide-x" style="--tw-divide-opacity:1;border-color:rgba(255,255,255,.1)" id="heroStats">
+      <div class="text-center px-4 py-2">
+        <div class="font-serif text-3xl font-bold hero-counter" style="color:#f0a472" data-target="12000">0</div>
+        <div class="text-xs mt-1 tracking-widest uppercase" style="color:rgba(255,255,255,.5)">Counselling Sessions</div>
+      </div>
+      <div class="text-center px-4 py-2">
+        <div class="font-serif text-3xl font-bold hero-counter" style="color:#f0a472" data-target="25000">0</div>
+        <div class="text-xs mt-1 tracking-widest uppercase" style="color:rgba(255,255,255,.5)">Legal Cases Aided</div>
+      </div>
+      <div class="text-center px-4 py-2">
+        <div class="font-serif text-3xl font-bold hero-counter" style="color:#f0a472" data-target="16">0</div>
+        <div class="text-xs mt-1 tracking-widest uppercase" style="color:rgba(255,255,255,.5)">Districts Reached</div>
+      </div>
+      <div class="text-center px-4 py-2">
+        <div class="font-serif text-3xl font-bold hero-counter" style="color:#f0a472" data-target="20000">0</div>
+        <div class="text-xs mt-1 tracking-widest uppercase" style="color:rgba(255,255,255,.5)">Lives Transformed</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about" class="py-24" style="background:#faf6f0">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <span class="text-[11px] font-black tracking-widest uppercase text-sage-500 block mb-3">Who We Are</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-sage-900 leading-snug mb-6">
+          We Don't Just Help.<br /><em class="italic" style="color:#547a4a">We Transform Lives.</em>
+        </h2>
+        <p class="text-sage-700 leading-relaxed mb-5" style="font-size:.97rem">
+          Founded in 2024 in Faizabad, Uttar Pradesh, Bhavini Foundation was born from an urgent reality — that thousands of women and children in our communities live in fear of domestic violence, dowry harassment, sexual exploitation, and trafficking, with nowhere to turn.
+        </p>
+        <p class="text-sage-600 leading-relaxed mb-7" style="font-size:.93rem">
+          We bridge that gap. Through professional counselling, legal advocacy, POCSO awareness in schools, menstrual health education, and direct intervention — we give survivors not just support, but power.
+        </p>
+        <blockquote class="border-l-4 border-terra-400 pl-5 py-3 rounded-r-2xl mb-7" style="background:#fdf4ef">
+          <p class="text-terra-800 text-sm leading-relaxed italic">"We treat the person, not just the problem — addressing the biological, psychological, and social factors that keep people trapped."</p>
+        </blockquote>
+        <div class="flex gap-4">
+          <a href="#programs" class="inline-flex items-center gap-2 bg-sage-700 hover:bg-sage-800 text-white text-xs font-bold tracking-widest uppercase px-6 py-3 rounded-full transition-all">Our Programs <i class="fas fa-arrow-right text-xs"></i></a>
+          <a href="#donate"   class="inline-flex items-center gap-2 border-2 border-terra-400 text-terra-600 hover:bg-terra-500 hover:text-white text-xs font-bold tracking-widest uppercase px-6 py-3 rounded-full transition-all">Support Us</a>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="card reveal d1 flex items-start gap-4 p-6">
+          <div class="icon-box bg-sage-50 text-sage-500"><i class="fas fa-hand-holding-heart"></i></div>
+          <div>
+            <h4 class="font-bold text-sage-900 text-sm tracking-wide uppercase mb-1">Government Advocacy</h4>
+            <p class="text-sage-600 text-sm leading-relaxed">Partnering with the Ministry of Women &amp; Child Development, local police, and legal bodies to strengthen protection systems for women and children.</p>
+          </div>
+        </div>
+        <div class="card reveal d2 flex items-start gap-4 p-6">
+          <div class="icon-box bg-terra-50 text-terra-500"><i class="fas fa-map-marked-alt"></i></div>
+          <div>
+            <h4 class="font-bold text-sage-900 text-sm tracking-wide uppercase mb-1">Rural Accessibility</h4>
+            <p class="text-sage-600 text-sm leading-relaxed">Conducting workshops in schools, health clinics, and community centres — reaching the most underserved corners of UP through local partnerships.</p>
+          </div>
+        </div>
+        <div class="card reveal d3 flex items-start gap-4 p-6">
+          <div class="icon-box" style="background:#f2f5f0;color:#547a4a"><i class="fas fa-balance-scale"></i></div>
+          <div>
+            <h4 class="font-bold text-sage-900 text-sm tracking-wide uppercase mb-1">Policy Change</h4>
+            <p class="text-sage-600 text-sm leading-relaxed">Lobbying for stronger laws on domestic violence, child abuse, and trafficking — building coalitions that create lasting systemic change beyond individual cases.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ IMPACT ═══════════════ -->
+<section id="impact" class="py-24" style="background:#273b23">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-16 reveal">
+      <span class="text-[11px] font-black tracking-widest uppercase block mb-3" style="color:#9db890">The Numbers Don't Lie</span>
+      <h2 class="font-serif text-4xl md:text-5xl" style="color:#faf6f0">Real Impact. <em class="italic" style="color:#f0a472">Real People.</em></h2>
+      <p class="mt-4 text-sm max-w-lg mx-auto" style="color:rgba(255,255,255,.5)">Since our founding in 2024, every rupee donated has gone directly to survivors, campaigns, and community protection.</p>
+    </div>
+
+    <!-- Big stats grid -->
+    <div class="grid md:grid-cols-4 gap-px mb-12 rounded-3xl overflow-hidden" style="background:rgba(255,255,255,.06)">
+      <div class="reveal p-8 text-center" style="background:rgba(255,255,255,.03)">
+        <div class="font-serif text-5xl font-bold mb-2 counter" style="color:#f0a472" data-target="12000">0</div>
+        <div class="text-xs tracking-widest uppercase font-bold mb-2" style="color:#9db890">Counselling Sessions</div>
+        <div class="prog-bar"><div class="prog-fill" data-width="72"></div></div>
+      </div>
+      <div class="reveal d1 p-8 text-center" style="background:rgba(255,255,255,.03)">
+        <div class="font-serif text-5xl font-bold mb-2 counter" style="color:#f0a472" data-target="25000">0</div>
+        <div class="text-xs tracking-widest uppercase font-bold mb-2" style="color:#9db890">Legal Cases Aided</div>
+        <div class="prog-bar"><div class="prog-fill" data-width="88"></div></div>
+      </div>
+      <div class="reveal d2 p-8 text-center" style="background:rgba(255,255,255,.03)">
+        <div class="font-serif text-5xl font-bold mb-2 counter" style="color:#f0a472" data-target="16000">0</div>
+        <div class="text-xs tracking-widest uppercase font-bold mb-2" style="color:#9db890">Children Educated</div>
+        <div class="prog-bar"><div class="prog-fill" data-width="60"></div></div>
+      </div>
+      <div class="reveal d3 p-8 text-center" style="background:rgba(255,255,255,.03)">
+        <div class="font-serif text-5xl font-bold mb-2 counter" style="color:#f0a472" data-target="20000">0</div>
+        <div class="text-xs tracking-widest uppercase font-bold mb-2" style="color:#9db890">Lives Transformed</div>
+        <div class="prog-bar"><div class="prog-fill" data-width="80"></div></div>
+      </div>
+    </div>
+
+    <!-- Photo grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 reveal">
+      <div class="photo-wrap relative aspect-square cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1692269725827-699e04a11cdf?q=80&w=600&auto=format&fit=crop" alt="Education Drive" />
+        <div class="photo-cap"><span class="text-white font-bold text-xs tracking-widest uppercase">Education Drive</span></div>
+      </div>
+      <div class="photo-wrap relative aspect-square cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=400&h=400&q=80" alt="Medical Camps" />
+        <div class="photo-cap"><span class="text-white font-bold text-xs tracking-widest uppercase">Medical Camps</span></div>
+      </div>
+      <div class="photo-wrap relative aspect-square cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=400&h=400&q=80" alt="Awareness Campaigns" />
+        <div class="photo-cap"><span class="text-white font-bold text-xs tracking-widest uppercase">Awareness Campaigns</span></div>
+      </div>
+      <div class="photo-wrap relative aspect-square cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1482848961846-c15622fd5db2?q=80&w=600&auto=format&fit=crop" alt="Community Resilience" />
+        <div class="photo-cap"><span class="text-white font-bold text-xs tracking-widest uppercase">Community Resilience</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROGRAMS ═══════════════ -->
+<section id="programs" class="py-24" style="background:#f0e9de">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <span class="text-[11px] font-black tracking-widest uppercase text-sage-500 block mb-3">What We Do</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-sage-900">Programs That <em class="italic" style="color:#d95f25">Actually Work</em></h2>
+      <p class="mt-4 text-sage-500 text-sm max-w-lg mx-auto">Each program is built around a survivor's full journey — from crisis to confidence.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card reveal relative overflow-hidden p-10 bar-sage">
+        <div class="icon-box bg-sage-50 text-sage-500 mb-5"><i class="fas fa-brain"></i></div>
+        <h3 class="font-serif text-2xl text-sage-900 mb-3">Mental Health Care</h3>
+        <p class="text-sage-600 text-sm leading-relaxed mb-5">Professional counselling, trauma therapy, and mental health first aid for survivors of domestic violence, sexual abuse, and trafficking — delivered by trained clinical staff.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-sage-400"></i> Individual &amp; group counselling</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-sage-400"></i> Mental health first aid training</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-sage-400"></i> Rural community outreach</li>
+        </ul>
+      </div>
+      <div class="card reveal d1 relative overflow-hidden p-10 bar-terra">
+        <div class="icon-box bg-terra-50 text-terra-500 mb-5"><i class="fas fa-gavel"></i></div>
+        <h3 class="font-serif text-2xl text-sage-900 mb-3">Legal Aid &amp; Justice</h3>
+        <p class="text-sage-600 text-sm leading-relaxed mb-5">Free legal support, POCSO Act workshops in schools, domestic violence awareness sessions, and direct advocacy for survivors navigating a complex legal system.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-terra-400"></i> Free legal consultation</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-terra-400"></i> POCSO awareness in schools</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-terra-400"></i> Good Touch / Bad Touch workshops</li>
+        </ul>
+      </div>
+      <div class="card reveal d2 relative overflow-hidden p-10 bar-gold">
+        <div class="icon-box mb-5" style="background:#fef9ee;color:#b45309"><i class="fas fa-shield-alt"></i></div>
+        <h3 class="font-serif text-2xl text-sage-900 mb-3">Rescue &amp; Rehabilitation</h3>
+        <p class="text-sage-600 text-sm leading-relaxed mb-5">Active intervention for trafficking and exploitation survivors, paired with long-term rehabilitation, vocational skill-building, and community reintegration support.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle" style="color:#d97706"></i> Crisis intervention &amp; safe shelter</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle" style="color:#d97706"></i> Vocational skill-building</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle" style="color:#d97706"></i> Social reintegration support</li>
+        </ul>
+      </div>
+      <div class="card reveal d3 relative overflow-hidden p-10" style="border-top:3px solid #324a2c">
+        <div class="icon-box bg-sage-50 text-sage-600 mb-5"><i class="fas fa-school"></i></div>
+        <h3 class="font-serif text-2xl text-sage-900 mb-3">School Workshops</h3>
+        <p class="text-sage-600 text-sm leading-relaxed mb-5">Age-appropriate, interactive workshops delivered directly in schools across UP — equipping children and teachers with the knowledge to recognise, report, and respond to abuse.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-sage-400"></i> POCSO Act awareness sessions</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-sage-400"></i> Good Touch / Bad Touch for children</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-sage-400"></i> Menstrual hygiene education for girls</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-sage-400"></i> Teacher sensitisation training</li>
+        </ul>
+      </div>
+      <div class="card reveal d1 relative overflow-hidden p-10" style="border-top:3px solid #d95f25">
+        <div class="icon-box bg-terra-50 text-terra-500 mb-5"><i class="fas fa-users"></i></div>
+        <h3 class="font-serif text-2xl text-sage-900 mb-3">Community Sessions</h3>
+        <p class="text-sage-600 text-sm leading-relaxed mb-5">Grassroots awareness drives in villages, urban slums, and community centres — bringing critical information on domestic violence, dowry rights, and mental health to those who need it most.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-terra-400"></i> Domestic violence awareness drives</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-terra-400"></i> Women's legal rights workshops</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-terra-400"></i> Mental health destigmatisation talks</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle text-terra-400"></i> Rural health &amp; hygiene camps</li>
+        </ul>
+      </div>
+      <div class="card reveal d2 relative overflow-hidden p-10" style="border-top:3px solid #f0a472">
+        <div class="icon-box mb-5" style="background:#fef9ee;color:#b45309"><i class="fas fa-handshake"></i></div>
+        <h3 class="font-serif text-2xl text-sage-900 mb-3">Collaborations</h3>
+        <p class="text-sage-600 text-sm leading-relaxed mb-5">We don't work in silos. We actively partner with organisations working in parallel spaces — amplifying collective impact through shared expertise, resources, and reach.</p>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle" style="color:#d97706"></i> Hospitals &amp; women's health NGOs</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle" style="color:#d97706"></i> Ministry of Women &amp; Child Dev.</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle" style="color:#d97706"></i> Corporate CSR partnerships</li>
+          <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle" style="color:#d97706"></i> UNICEF &amp; UN Women (planned)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Framework steps -->
+    <div class="mt-10 rounded-3xl overflow-hidden" style="background:#273b23">
+      <div class="grid md:grid-cols-4 divide-y md:divide-y-0 md:divide-x" style="border-color:rgba(255,255,255,.08)">
+        <div class="reveal p-8 hover:bg-sage-900 transition-colors">
+          <div class="step-n">01</div>
+          <h4 class="font-bold text-xs tracking-widest uppercase mb-2" style="color:#f0a472">Identify</h4>
+          <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.5)">Systematic outreach in schools, villages, and clinics to find survivors who need urgent support.</p>
+        </div>
+        <div class="reveal d1 p-8 hover:bg-sage-900 transition-colors">
+          <div class="step-n">02</div>
+          <h4 class="font-bold text-xs tracking-widest uppercase mb-2" style="color:#f0a472">Intervene</h4>
+          <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.5)">Immediate clinical counselling, safe shelter coordination, and legal advocacy for survivors in crisis.</p>
+        </div>
+        <div class="reveal d2 p-8 hover:bg-sage-900 transition-colors">
+          <div class="step-n">03</div>
+          <h4 class="font-bold text-xs tracking-widest uppercase mb-2" style="color:#f0a472">Rehabilitate</h4>
+          <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.5)">Long-term mental health support, legal follow-up, and vocational training for full independence.</p>
+        </div>
+        <div class="reveal d3 p-8 hover:bg-sage-900 transition-colors">
+          <div class="step-n">04</div>
+          <h4 class="font-bold text-xs tracking-widest uppercase mb-2" style="color:#f0a472">Advocate</h4>
+          <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.5)">Lobbying policymakers and building coalitions for stronger laws that prevent future exploitation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SUCCESS STORIES ═══════════════ -->
+<section id="stories" class="py-24" style="background:#faf6f0">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <span class="text-[11px] font-black tracking-widest uppercase text-sage-500 block mb-3">Success Stories</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-sage-900">Behind Every Number <em class="italic" style="color:#547a4a">Is a Person</em></h2>
+      <p class="mt-4 text-sage-500 text-sm max-w-lg mx-auto">Names changed to protect privacy. These are real journeys of survival, strength, and transformation.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-7">
+      <!-- Story 1 -->
+      <div class="story-card card reveal">
+        <div class="p-7">
+          <span class="badge mb-4 inline-flex" style="background:rgba(84,122,74,.15);color:#3f5e38;font-size:.6rem">Mental Health</span>
+          <h3 class="font-serif text-xl text-sage-900 mb-3">"I finally felt heard for the first time."</h3>
+          <p class="text-sage-600 text-sm leading-relaxed mb-4">Priya, 28, came to us after three years of domestic abuse with nowhere to go. Within six months of counselling and legal support, she filed a protection order and secured employment through our skill-building programme.</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-sage-100 flex items-center justify-center text-sage-500 text-xs font-bold">P</div>
+            <div>
+              <div class="text-xs font-bold text-sage-800">Priya S. <span class="text-sage-400 font-normal">· Faizabad</span></div>
+              <div class="text-xs text-sage-400">Survivor, 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Story 2 -->
+      <div class="story-card card reveal d1">
+        <div class="p-7">
+          <span class="badge mb-4 inline-flex" style="background:rgba(217,95,37,.12);color:#b8481a;font-size:.6rem">Child Safety</span>
+          <h3 class="font-serif text-xl text-sage-900 mb-3">"The workshop saved my daughter."</h3>
+          <p class="text-sage-600 text-sm leading-relaxed mb-4">After attending a Bhavini Good Touch / Bad Touch workshop, 10-year-old Ananya recognised unsafe behaviour from a family acquaintance and told her mother immediately — enabling timely intervention.</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-terra-100 flex items-center justify-center text-terra-500 text-xs font-bold">R</div>
+            <div>
+              <div class="text-xs font-bold text-sage-800">Rekha D. <span class="text-sage-400 font-normal">· Lucknow</span></div>
+              <div class="text-xs text-sage-400">Parent, 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Story 3 -->
+      <div class="story-card card reveal d2">
+        <div class="p-7">
+          <span class="badge mb-4 inline-flex" style="background:rgba(39,59,35,.12);color:#547a4a;font-size:.6rem">Rehabilitation</span>
+          <h3 class="font-serif text-xl text-sage-900 mb-3">"I have my life back. And a future."</h3>
+          <p class="text-sage-600 text-sm leading-relaxed mb-4">Meena, 22, was rescued from a trafficking network. After 18 months in our rehabilitation programme — including therapy, legal support, and tailoring training — she now runs her own small business.</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-sage-100 flex items-center justify-center text-sage-500 text-xs font-bold">M</div>
+            <div>
+              <div class="text-xs font-bold text-sage-800">Meena K. <span class="text-sage-400 font-normal">· Varanasi</span></div>
+              <div class="text-xs text-sage-400">Survivor, 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="mt-12 grid md:grid-cols-2 gap-6">
+      <div class="testi-card reveal">
+        <div class="pt-6 pl-4">
+          <p class="text-sage-700 text-sm leading-relaxed mb-5 italic">"Bhavini Foundation did not just give me a lawyer. They gave me courage. For the first time in seven years, I stood up for myself."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-terra-100 flex items-center justify-center text-terra-500 font-bold text-sm">S</div>
+            <div>
+              <div class="text-sm font-bold text-sage-800">Sunita P.</div>
+              <div class="text-xs text-sage-400">Domestic Violence Survivor · Gorakhpur</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal d1">
+        <div class="pt-6 pl-4">
+          <p class="text-sage-700 text-sm leading-relaxed mb-5 italic">"The POCSO workshop the Foundation ran in our school was eye-opening — for children and teachers alike. Every school in India needs this."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-sage-100 flex items-center justify-center text-sage-500 font-bold text-sm">A</div>
+            <div>
+              <div class="text-sm font-bold text-sage-800">Amit R.</div>
+              <div class="text-xs text-sage-400">School Principal · Ayodhya</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GOALS ═══════════════ -->
+<section id="goals" class="py-24" style="background:#f0e9de">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <span class="text-[11px] font-black tracking-widest uppercase text-sage-500 block mb-3">Our Roadmap</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-sage-900">Where We're <em class="italic" style="color:#d95f25">Headed</em></h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card reveal relative overflow-hidden p-10 bar-terra">
+        <div class="flex items-center gap-3 mb-7">
+          <div class="icon-box bg-terra-50 text-terra-500"><i class="fas fa-seedling"></i></div>
+          <div>
+            <p class="text-xs font-black tracking-widest uppercase text-terra-500">1–2 Years</p>
+            <h3 class="font-serif text-2xl text-sage-900">Short-Term Goals</h3>
+          </div>
+        </div>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-terra-50 text-terra-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs"><i class="fas fa-check"></i></span><p class="text-sage-600 text-sm leading-relaxed"><strong class="text-sage-800">POCSO &amp; Safety Workshops</strong> — Expand to more schools and community centres across UP.</p></li>
+          <li class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-terra-50 text-terra-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs"><i class="fas fa-check"></i></span><p class="text-sage-600 text-sm leading-relaxed"><strong class="text-sage-800">Strategic Partnerships</strong> — Formalise collaborations with hospitals, schools, and government bodies.</p></li>
+          <li class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-terra-50 text-terra-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs"><i class="fas fa-check"></i></span><p class="text-sage-600 text-sm leading-relaxed"><strong class="text-sage-800">Fundraising Campaigns</strong> — Crowdfunding, charity events, and corporate CSR partnerships.</p></li>
+          <li class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-terra-50 text-terra-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs"><i class="fas fa-check"></i></span><p class="text-sage-600 text-sm leading-relaxed"><strong class="text-sage-800">Volunteer Corps</strong> — Train 100+ volunteers in mental health first aid and legal support.</p></li>
+        </ul>
+      </div>
+      <div class="card reveal d1 relative overflow-hidden p-10 bar-sage">
+        <div class="flex items-center gap-3 mb-7">
+          <div class="icon-box bg-sage-50 text-sage-500"><i class="fas fa-mountain"></i></div>
+          <div>
+            <p class="text-xs font-black tracking-widest uppercase text-sage-500">3–5 Years</p>
+            <h3 class="font-serif text-2xl text-sage-900">Long-Term Vision</h3>
+          </div>
+        </div>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-sage-50 text-sage-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs"><i class="fas fa-check"></i></span><p class="text-sage-600 text-sm leading-relaxed"><strong class="text-sage-800">Shelter Homes</strong> — Build safe, legally supported shelters for women escaping violence and trafficking.</p></li>
+          <li class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-sage-50 text-sage-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs"><i class="fas fa-check"></i></span><p class="text-sage-600 text-sm leading-relaxed"><strong class="text-sage-800">National Expansion</strong> — Extend reach through state-level campaigns, online webinars, and national NGO partnerships.</p></li>
+          <li class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-sage-50 text-sage-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs"><i class="fas fa-check"></i></span><p class="text-sage-600 text-sm leading-relaxed"><strong class="text-sage-800">Policy Influence</strong> — Drive legislative change on domestic violence, trafficking, and child protection laws.</p></li>
+          <li class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-sage-50 text-sage-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs"><i class="fas fa-check"></i></span><p class="text-sage-600 text-sm leading-relaxed"><strong class="text-sage-800">Global Partnerships</strong> — Collaborate with UNICEF, UN Women, and international human rights bodies.</p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DONATE ═══════════════ -->
+<section id="donate" class="py-24" style="background:#1a271a">
+  <div class="max-w-4xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <span class="text-[11px] font-black tracking-widest uppercase block mb-3" style="color:#9db890">Make a Difference Today</span>
+      <h2 class="font-serif text-4xl md:text-5xl mb-4" style="color:#faf6f0">Your ₹500 Can Fund <em class="italic" style="color:#f0a472">a Counselling Session.</em></h2>
+      <p class="text-sm max-w-lg mx-auto" style="color:rgba(255,255,255,.5)">100% of your donation goes directly to survivors. We maintain full transparency with annual impact reports.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 reveal">
+      <!-- UPI / QR -->
+      <div class="rounded-3xl p-8" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">
+        <h3 class="font-serif text-xl mb-6" style="color:#faf6f0">Scan &amp; Pay Instantly</h3>
+        <div class="flex flex-col items-center mb-6 p-5 rounded-2xl" style="background:#faf6f0">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=bhavini@okaxis" alt="UPI QR Code" class="w-40 h-40 rounded-xl mb-3 shadow-sm" />
+          <p class="text-terra-500 font-bold text-base">bhavini@okaxis</p>
+          <p class="text-xs text-sage-400 tracking-widest uppercase mt-1">Scan via any UPI app</p>
+        </div>
+        <!-- Amount buttons -->
+        <div class="mb-4">
+          <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:rgba(255,255,255,.5)">Choose an amount</p>
+          <div class="grid grid-cols-3 gap-2 mb-3">
+            <button class="amt-btn" onclick="selectAmt(this,'500')">₹500</button>
+            <button class="amt-btn" onclick="selectAmt(this,'1000')">₹1,000</button>
+            <button class="amt-btn" onclick="selectAmt(this,'2500')">₹2,500</button>
+            <button class="amt-btn" onclick="selectAmt(this,'5000')">₹5,000</button>
+            <button class="amt-btn" onclick="selectAmt(this,'10000')">₹10,000</button>
+            <button class="amt-btn" onclick="selectAmt(this,'custom')">Custom</button>
+          </div>
+          <div id="customAmtWrap" class="hidden">
+            <input type="number" placeholder="Enter amount (₹)" class="finput text-sage-900" id="customAmt" />
+          </div>
+        </div>
+        <div class="flex items-center gap-2 rounded-xl p-3" style="background:rgba(240,164,114,.12);border:1px solid rgba(240,164,114,.2)">
+          <i class="fas fa-certificate" style="color:#f0a472"></i>
+          <p class="text-xs font-bold" style="color:#f0a472">Tax Benefits under Section 80G · 50% Deduction</p>
+        </div>
+      </div>
+
+      <!-- Bank transfer -->
+      <div class="rounded-3xl p-8 flex flex-col" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">
+        <h3 class="font-serif text-xl mb-6" style="color:#faf6f0">Bank Transfer</h3>
+        <div class="space-y-4 mb-6 flex-1">
+          <div class="flex justify-between items-center py-3 border-b" style="border-color:rgba(255,255,255,.08)">
+            <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.4)">Bank</span>
+            <span class="text-sm font-bold" style="color:rgba(255,255,255,.85)">Axis Bank</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b" style="border-color:rgba(255,255,255,.08)">
+            <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.4)">Account No.</span>
+            <span class="text-sm font-bold" style="color:rgba(255,255,255,.85)">924020037380123</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b" style="border-color:rgba(255,255,255,.08)">
+            <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.4)">IFSC Code</span>
+            <span class="text-sm font-bold" style="color:#f0a472">UTIB0000000</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b" style="border-color:rgba(255,255,255,.08)">
+            <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.4)">Account Name</span>
+            <span class="text-sm font-bold" style="color:rgba(255,255,255,.85)">Bhavini Foundation</span>
+          </div>
+          <div class="flex justify-between items-center py-3">
+            <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.4)">UPI ID</span>
+            <span class="text-sm font-bold" style="color:#f0a472">bhavini@okaxis</span>
+          </div>
+        </div>
+        <!-- Trust badges -->
+        <div class="space-y-3">
+          <div class="cred-badge" style="color:rgba(255,255,255,.7)"><i class="fas fa-shield-alt text-sage-400"></i> Registered Section 8 Non-Profit</div>
+          <div class="cred-badge" style="color:rgba(255,255,255,.7)"><i class="fas fa-file-alt text-sage-400"></i> CIN: U88900UP2024NPL204877</div>
+          <div class="cred-badge" style="color:rgba(255,255,255,.7)"><i class="fas fa-chart-bar text-sage-400"></i> Annual Impact Reports Published</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GET INVOLVED ═══════════════ -->
+<section id="get-involved" class="py-24" style="background:#faf6f0">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <span class="text-[11px] font-black tracking-widest uppercase text-sage-500 block mb-3">Join the Mission</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-sage-900">There Are Many Ways to <em class="italic" style="color:#547a4a">Show Up</em></h2>
+    </div>
+
+    <!-- 3 ways -->
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+      <div class="card reveal p-8 text-center">
+        <div class="w-16 h-16 rounded-2xl bg-sage-50 text-sage-500 flex items-center justify-center text-2xl mx-auto mb-5"><i class="fas fa-user-plus"></i></div>
+        <h3 class="font-serif text-xl text-sage-900 mb-3">Volunteer</h3>
+        <p class="text-sage-600 text-sm leading-relaxed mb-5">Run awareness drives, provide legal guidance, conduct health camps, or mentor survivors. Your skills — whatever they are — can change a life.</p>
+        <a href="#volunteer-form" class="inline-flex items-center gap-2 bg-sage-700 hover:bg-sage-800 text-white text-xs font-bold tracking-widest uppercase px-5 py-3 rounded-full transition-all">Register Now</a>
+      </div>
+      <div class="card reveal d1 p-8 text-center">
+        <div class="w-16 h-16 rounded-2xl bg-terra-50 text-terra-500 flex items-center justify-center text-2xl mx-auto mb-5"><i class="fas fa-handshake"></i></div>
+        <h3 class="font-serif text-xl text-sage-900 mb-3">Partner</h3>
+        <p class="text-sage-600 text-sm leading-relaxed mb-5">Is your school, hospital, or company looking to make a real social impact? Partner with us for workshops, CSR initiatives, or joint programmes.</p>
+        <a href="mailto:info@bhavinifoundation.com" class="inline-flex items-center gap-2 bg-terra-500 hover:bg-terra-600 text-white text-xs font-bold tracking-widest uppercase px-5 py-3 rounded-full transition-all">Get in Touch</a>
+      </div>
+      <div class="card reveal d2 p-8 text-center">
+        <div class="w-16 h-16 rounded-2xl bg-sage-50 text-sage-500 flex items-center justify-center text-2xl mx-auto mb-5"><i class="fas fa-bullhorn"></i></div>
+        <h3 class="font-serif text-xl text-sage-900 mb-3">Spread the Word</h3>
+        <p class="text-sage-600 text-sm leading-relaxed mb-5">Share our mission on social media, organise a fundraiser in your community, or simply tell one person about Bhavini Foundation today.</p>
+        <a href="https://www.instagram.com/bhavinifoundation/" target="_blank" class="inline-flex items-center gap-2 border-2 border-sage-300 text-sage-600 hover:bg-sage-700 hover:text-white hover:border-sage-700 text-xs font-bold tracking-widest uppercase px-5 py-3 rounded-full transition-all">Follow &amp; Share</a>
+      </div>
+    </div>
+
+    <!-- Volunteer form -->
+    <div id="volunteer-form" class="rounded-3xl overflow-hidden shadow-xl reveal" style="background:#273b23">
+      <div class="grid lg:grid-cols-2">
+        <div class="p-10 lg:p-14">
+          <h2 class="font-serif text-3xl mb-2" style="color:#faf6f0">Volunteer Registration</h2>
+          <p class="text-sm italic mb-8" style="color:rgba(255,255,255,.45)">"Every hand we gain reaches ten more lives."</p>
+          <form id="vForm" action="https://script.google.com/macros/s/AKfycbwEXOyNer51OcZFT8q5QzuZsb054kCmFIXzPsjujWpKwisuLxq08l4dLIqIwf_gQll19Q/exec" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <input type="text"  name="name"  placeholder="Full Name" required class="dinput" />
+            <input type="email" name="email" placeholder="Email Address" required class="dinput" />
+            <input type="tel"   name="phone" placeholder="Phone Number" class="dinput" />
+            <select name="role" required class="dinput appearance-none cursor-pointer">
+              <option value="" disabled selected>Select Your Role</option>
+              <option value="Mentorship">Mentorship</option>
+              <option value="Legal Advocacy">Legal Advocacy</option>
+              <option value="Health Support">Health Support</option>
+              <option value="Awareness Campaigns">Awareness Campaigns</option>
+              <option value="Fundraising">Fundraising &amp; Events</option>
+              <option value="Social Media">Social Media &amp; Outreach</option>
+              <option value="Other">Other</option>
+            </select>
+            <textarea name="message" placeholder="Tell us why you want to join..." class="dinput md:col-span-2 h-24 resize-none"></textarea>
+            <button type="submit" id="submitBtn" class="md:col-span-2 bg-terra-500 hover:bg-terra-400 text-white font-black text-xs tracking-widest uppercase py-4 rounded-xl transition-all shadow-md">
+              Submit Registration
+            </button>
+          </form>
+          <div id="success" class="hidden text-center mt-5 font-bold text-sm" style="color:#9db890"><i class="fas fa-check-circle mr-2"></i>Application Sent! We'll be in touch soon.</div>
+        </div>
+        <!-- Leadership panel -->
+        <div class="p-10 lg:p-14 border-t lg:border-t-0 lg:border-l" style="border-color:rgba(255,255,255,.08)">
+          <h3 class="font-serif text-xl mb-8 border-l-4 border-terra-400 pl-4" style="color:#faf6f0">Our Leadership</h3>
+          <div class="space-y-7">
+            <div class="flex items-center gap-5 group">
+              <a href="https://www.linkedin.com/in/mithila-malhotra/" target="_blank" class="w-18 h-18 rounded-2xl overflow-hidden flex-shrink-0 ring-2 ring-sage-700 group-hover:ring-terra-400 transition-all grayscale group-hover:grayscale-0" style="width:72px;height:72px">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKQWU-i_Ki-1SHe4euEZFM75wH-2Oi--jO7g&s" alt="Mithila Malhotra" class="w-full h-full object-cover" />
+              </a>
+              <div>
+                <a href="https://www.linkedin.com/in/mithila-malhotra/" target="_blank">
+                  <h4 class="font-bold text-base" style="color:#faf6f0">Mithila Malhotra <i class="fab fa-linkedin text-xs ml-1 text-sage-500 group-hover:text-blue-400"></i></h4>
+                </a>
+                <p class="text-xs font-black tracking-widest uppercase mt-1 mb-2" style="color:#f0a472">Founder &amp; Director</p>
+                <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.5)">Championing gender equality and protection against domestic abuse across Uttar Pradesh.</p>
+              </div>
+            </div>
+            <div class="h-px" style="background:rgba(255,255,255,.08)"></div>
+            <div class="flex items-center gap-5 group">
+              <a href="https://www.linkedin.com/in/akhil-mahajan-5101641a/" target="_blank" class="rounded-2xl overflow-hidden flex-shrink-0 ring-2 ring-sage-700 group-hover:ring-terra-400 transition-all grayscale group-hover:grayscale-0" style="width:72px;height:72px">
+                <img src="https://media.licdn.com/dms/image/v2/C4D03AQGwgEq4siPyZw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516838174117?e=1778716800&v=beta&t=28Kb4OlMAANUpnGmWN6OauWPQTTrP6qVcigojm6HaDU" alt="Akhil Mahajan" class="w-full h-full object-cover" />
+              </a>
+              <div>
+                <a href="https://www.linkedin.com/in/akhil-mahajan-5101641a/" target="_blank">
+                  <h4 class="font-bold text-base" style="color:#faf6f0">Akhil Mahajan <i class="fab fa-linkedin text-xs ml-1 text-sage-500 group-hover:text-blue-400"></i></h4>
+                </a>
+                <p class="text-xs font-black tracking-widest uppercase mt-1 mb-2" style="color:#f0a472">Founder &amp; Director</p>
+                <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.5)">Driving mental health resource accessibility and rural community outreach strategy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer id="contact" class="py-20 px-5" style="background:#0f1a0f;color:rgba(255,255,255,.55)">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-12 mb-14">
+      <!-- Brand -->
+      <div class="md:col-span-1 space-y-5">
+        <div class="flex items-center gap-3">
+          <img src="https://raw.githubusercontent.com/abhishekism/Bhavinifoundation/74fa113e766bc90a5156094f5c4ce8560402632d/dca9536e-bd4d-4399-8d4f-3b2f15fcf831.png" alt="Bhavini Foundation" class="h-11 w-11 rounded-full object-cover bg-white p-0.5" />
+          <div>
+            <div class="font-serif text-xl leading-none" style="color:#f0a472">Bhavini</div>
+            <div class="text-xs tracking-widest uppercase font-bold" style="color:rgba(255,255,255,.3)">Foundation</div>
+          </div>
+        </div>
+        <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.4)">Healing Minds. Protecting Lives. Transforming Communities across Uttar Pradesh since 2024.</p>
+        <div class="flex gap-3">
+          <a href="https://www.linkedin.com/company/bhavini-foundation" target="_blank" class="w-9 h-9 rounded-xl flex items-center justify-center text-sm transition-all hover:bg-terra-600 hover:text-white" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/bhavinifoundation/" target="_blank" class="w-9 h-9 rounded-xl flex items-center justify-center text-sm transition-all hover:bg-terra-600 hover:text-white" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/918448928049" class="w-9 h-9 rounded-xl flex items-center justify-center text-sm transition-all hover:bg-green-600 hover:text-white" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <!-- Quick links -->
+      <div>
+        <h4 class="font-black text-xs tracking-widest uppercase mb-5 pb-3 border-b" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.08)">Quick Links</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#about"        class="hover:text-white transition-colors">About Us</a></li>
+          <li><a href="#programs"     class="hover:text-white transition-colors">Our Programs</a></li>
+          <li><a href="#impact"       class="hover:text-white transition-colors">Our Impact</a></li>
+          <li><a href="#stories"      class="hover:text-white transition-colors">Success Stories</a></li>
+          <li><a href="#goals"        class="hover:text-white transition-colors">Our Goals</a></li>
+          <li><a href="#get-involved" class="hover:text-white transition-colors">Get Involved</a></li>
+          <li><a href="#donate"       class="hover:text-white transition-colors">Donate</a></li>
+        </ul>
+      </div>
+      <!-- Contact -->
+      <div>
+        <h4 class="font-black text-xs tracking-widest uppercase mb-5 pb-3 border-b" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.08)">Contact Us</h4>
+        <div class="space-y-3 text-sm">
+          <a href="tel:+918448928049"                    class="flex items-start gap-3 hover:text-white transition-colors"><i class="fas fa-phone-alt w-4 mt-0.5" style="color:#f0a472"></i>+91 8448928049 / 8448928452</a>
+          <a href="mailto:info@bhavinifoundation.com"    class="flex items-start gap-3 hover:text-white transition-colors"><i class="fas fa-envelope w-4 mt-0.5" style="color:#f0a472"></i>info@bhavinifoundation.com</a>
+          <p class="flex items-start gap-3"><i class="fas fa-map-marker-alt w-4 mt-0.5" style="color:#f0a472"></i>124, Modha South, Faizabad, UP – 224001</p>
+        </div>
+      </div>
+      <!-- Legal + Donate -->
+      <div>
+        <h4 class="font-black text-xs tracking-widest uppercase mb-5 pb-3 border-b" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.08)">Legal &amp; Transparency</h4>
+        <div class="space-y-3 p-4 rounded-2xl mb-5" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)">
+          <div><p class="text-xs" style="color:rgba(255,255,255,.3)">CIN</p><p class="text-xs font-semibold" style="color:rgba(255,255,255,.7)">U88900UP2024NPL204877</p></div>
+          <div><p class="text-xs" style="color:rgba(255,255,255,.3)">Status</p><p class="text-xs font-semibold" style="color:rgba(255,255,255,.7)">Active · Section 8 Non-Profit</p></div>
+          <div><p class="text-xs" style="color:rgba(255,255,255,.3)">Tax Benefit</p><p class="text-xs font-semibold" style="color:#f0a472">Section 80G · 50% Deduction</p></div>
+        </div>
+        <button onclick="toggleModal()" class="w-full bg-terra-500 hover:bg-terra-400 text-white font-black text-xs tracking-widest uppercase py-3.5 rounded-full transition-all shadow-lg">
+          Donate Now ❤️
+        </button>
+      </div>
+    </div>
+    <div class="pt-6 border-t flex flex-col md:flex-row justify-between items-center gap-3 text-xs tracking-widest uppercase" style="border-color:rgba(255,255,255,.07);color:rgba(255,255,255,.2)">
+      <span>© 2026 Bhavini Foundation · All Rights Reserved</span>
+      <span>Registered at ROC Kanpur · June 2024</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ DONATE MODAL ═══════════════ -->
+<div id="donateModal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0" style="background:rgba(15,26,15,.94);backdrop-filter:blur(8px)" onclick="toggleModal()"></div>
+  <div class="relative bg-white rounded-3xl w-full max-w-md p-8 shadow-2xl z-10">
+    <div class="flex justify-between items-start mb-6">
+      <div><h3 class="font-serif text-xl text-sage-900">Support Our Vision</h3><p class="text-xs tracking-widest uppercase text-sage-400 mt-1">Mental Health &amp; Social Advocacy</p></div>
+      <button onclick="toggleModal()" class="w-8 h-8 rounded-full bg-sage-100 hover:bg-terra-100 flex items-center justify-center text-sage-500 hover:text-terra-600 transition-colors"><i class="fas fa-times text-sm"></i></button>
+    </div>
+    <div class="grid grid-cols-2 gap-5 mb-5">
+      <div class="rounded-2xl p-4 text-center border border-sage-100" style="background:#faf6f0">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=bhavini@okaxis" alt="QR Code" class="w-32 h-32 mx-auto rounded-xl mb-3 shadow-sm" />
+        <p class="text-terra-500 font-bold text-sm">bhavini@okaxis</p>
+        <p class="text-xs tracking-widest uppercase text-sage-400 mt-1">Scan via UPI</p>
+      </div>
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold tracking-widest uppercase text-sage-400 border-b border-sage-100 pb-2">Bank Transfer</h4>
+        <div><p class="text-xs text-sage-400">Bank</p><p class="text-sm font-bold text-sage-800">Axis Bank</p></div>
+        <div><p class="text-xs text-sage-400">Account No.</p><p class="text-sm font-bold text-sage-800">924020037380123</p></div>
+        <div><p class="text-xs text-sage-400">IFSC</p><p class="text-sm font-bold text-terra-500">UTIB0000000</p></div>
+        <div><p class="text-xs text-sage-400">Name</p><p class="text-sm font-bold text-sage-800">Bhavini Foundation</p></div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 rounded-2xl p-4 mb-4" style="background:#fdf4ef;border:1px solid rgba(217,95,37,.2)">
+      <i class="fas fa-certificate text-terra-400"></i>
+      <p class="text-xs font-bold tracking-widest uppercase text-terra-500">Tax Benefits under Section 80G</p>
+    </div>
+    <button onclick="toggleModal()" class="w-full bg-terra-500 hover:bg-terra-600 text-white font-bold text-xs tracking-widest uppercase py-4 rounded-full transition-all shadow-md">Thank You ❤️</button>
+  </div>
+</div>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/918448928049" target="_blank" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all">
+  <i class="fab fa-whatsapp text-3xl"></i>
+</a>
+
+<script>
+  // Nav
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('nav-shadow', window.scrollY > 10);
+    revealAll();
+    animateProgBars();
+  });
+
+  // Mobile nav
+  document.getElementById('burgerBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('hidden'));
+  function closeMob() { document.getElementById('mobileMenu').classList.add('hidden'); }
+
+  // Reveal
+  function revealAll() {
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
+    });
+  }
+  revealAll();
+
+  // Modal
+  function toggleModal() {
+    document.getElementById('donateModal').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('donateModal').classList.contains('open') ? 'hidden' : '';
+  }
+
+  // Counter animation
+  function animateCounters(selector) {
+    document.querySelectorAll(selector).forEach(el => {
+      if (el.dataset.done) return;
+      el.dataset.done = 1;
+      const target = +el.dataset.target;
+      let c = 0, step = target / (1600/16);
+      const t = setInterval(() => {
+        c = Math.min(c + step, target);
+        el.textContent = c >= 1000 ? Math.round(c/1000)+'K+' : Math.ceil(c)+'+';
+        if (c >= target) clearInterval(t);
+      }, 16);
+    });
+  }
+
+  // Hero counters on load
+  setTimeout(() => animateCounters('.hero-counter'), 600);
+
+  // Section counters on scroll
+  let impactDone = false;
+  function checkImpact() {
+    const sec = document.querySelector('#impact .grid.md\\:grid-cols-4');
+    if (sec && !impactDone && sec.getBoundingClientRect().top < window.innerHeight - 60) {
+      impactDone = true;
+      animateCounters('.counter');
+    }
+  }
+  window.addEventListener('scroll', checkImpact);
+
+  // Progress bars
+  let progDone = false;
+  function animateProgBars() {
+    if (progDone) return;
+    document.querySelectorAll('.prog-fill').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight - 40 && !el.dataset.animated) {
+        el.dataset.animated = 1;
+        el.style.width = el.dataset.width + '%';
+        progDone = true;
+      }
+    });
+  }
+
+  // Amount buttons
+  function selectAmt(btn, val) {
+    document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('customAmtWrap').classList.toggle('hidden', val !== 'custom');
+  }
+
+  // Form
+  const vForm = document.getElementById('vForm');
+  const vBtn  = document.getElementById('submitBtn');
+  const vOk   = document.getElementById('success');
+  vForm.addEventListener('submit', e => {
+    e.preventDefault();
+    vBtn.textContent = 'Sending…';
+    vBtn.disabled = true;
+    fetch(vForm.action, { method:'POST', body: new FormData(vForm) })
+      .then(() => { vForm.style.display='none'; vOk.classList.remove('hidden'); })
+      .catch(() => { alert('Something went wrong. Please try again.'); vBtn.textContent='Submit Registration'; vBtn.disabled=false; });
+  });
+</script>
+</body>
+</html>
