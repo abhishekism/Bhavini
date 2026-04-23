@@ -167,10 +167,17 @@
 
     /* ── 8. Programs horizontal scroll on mobile ── */
     @media(max-width:767px){
-      .programs-scroll { display:flex; overflow-x:auto; gap:16px; padding-bottom:12px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+      /* Programs section — horizontal scroll on mobile, grid on desktop */
+      .programs-outer { overflow: hidden; }  /* clip container */
+      .programs-scroll { display:flex; overflow-x:auto; gap:16px; padding:4px 4px 16px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
       .programs-scroll::-webkit-scrollbar { height:4px; }
       .programs-scroll::-webkit-scrollbar-thumb { background:#9db890; border-radius:4px; }
-      .programs-scroll .card { min-width:80vw; scroll-snap-align:start; flex-shrink:0; }
+      .programs-scroll > .card { min-width:82vw; max-width:82vw; scroll-snap-align:start; flex-shrink:0; }
+      @media(min-width:768px) {
+        .programs-outer { overflow:visible; }
+        .programs-scroll { display:grid; grid-template-columns:repeat(3,1fr); overflow-x:visible; padding:0; scroll-snap-type:none; gap:24px; }
+        .programs-scroll > .card { min-width:unset; max-width:unset; }
+      }
     }
 
     /* ── Media strip ── */
@@ -433,14 +440,14 @@
 
 <span class="wave-divider" style="background:#f0e9de"><svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0 C480,48 960,48 1440,0 L1440,48 L0,48 Z" fill="#273b23"/></svg></span>
 <!-- ═══════════════ PROGRAMS ═══════════════ -->
-<section id="programs" class="py-24" style="background:#f0e9de">
+<section id="programs" class="py-24" style="background:#f0e9de;overflow:hidden">
   <div class="max-w-6xl mx-auto px-5">
     <div class="text-center mb-14 reveal">
       <span class="text-[11px] font-black tracking-widest uppercase text-sage-500 block mb-3">What We Do</span>
       <h2 class="font-serif text-4xl md:text-5xl text-sage-900">Programs That <em class="italic" style="color:#d95f25">Actually Work</em></h2>
       <p class="mt-4 text-sage-500 text-sm max-w-lg mx-auto">Each program is built around a survivor's full journey — from crisis to confidence.</p>
     </div>
-    <div class="programs-scroll grid md:grid-cols-3 gap-6">
+    <div class="programs-outer"><div class="programs-scroll" id="programsScroll">
       <div class="card reveal relative overflow-hidden p-10 bar-sage">
         <div class="icon-box bg-sage-50 text-sage-500 mb-5"><i class="fas fa-brain"></i></div>
         <h3 class="font-serif text-2xl text-sage-900 mb-3">Mental Health Care</h3>
@@ -504,7 +511,7 @@
           <li class="flex items-center gap-2 text-xs text-sage-500"><i class="fas fa-check-circle" style="color:#d97706"></i> UNICEF &amp; UN Women (planned)</li>
         </ul>
       </div>
-    </div>
+    </div></div>
 
     <!-- Framework steps -->
     <div class="mt-10 rounded-3xl overflow-hidden" style="background:#273b23">
