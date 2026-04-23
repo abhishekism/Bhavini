@@ -47,7 +47,11 @@
     .hero-bg {
       background:
         linear-gradient(160deg, rgba(10,22,8,.78) 0%, rgba(30,45,18,.55) 50%, rgba(55,28,10,.75) 100%),
-        url('https://images.unsplash.com/photo-1763735134124-b1bb75f5386e?q=80&w=1166&auto=format&fit=crop') center 40%/cover no-repeat fixed;
+        url('https://images.unsplash.com/photo-1763735134124-b1bb75f5386e?q=80&w=1166&auto=format&fit=crop') center 40%/cover no-repeat scroll;
+    }
+    /* Parallax only on desktop — mobile doesn't support fixed backgrounds reliably */
+    @media (min-width: 768px) {
+      .hero-bg { background-attachment: fixed; }
     }
 
     /* Cards */
@@ -173,7 +177,7 @@
         Every Survivor<br />Deserves a <em class="italic" style="color:#f0a472">Safe Tomorrow.</em>
       </h1>
       <p class="text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto" style="color:rgba(255,255,255,.78);font-weight:300">
-        Bhavini Foundation stands between a woman and her abuser, a child and their exploiter, a survivor and their silence. We provide mental health care, legal aid, and community protection across Uttar Pradesh & Delhi NCR.
+        Bhavini Foundation stands between a woman and her abuser, a child and their exploiter, a survivor and their silence. We provide mental health care, legal aid, and community protection across Uttar Pradesh.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="#donate" class="inline-flex items-center justify-center gap-2 bg-terra-500 hover:bg-terra-600 text-white font-bold text-xs tracking-widest uppercase px-8 py-4 rounded-full transition-all shadow-xl" style="font-weight:800">
