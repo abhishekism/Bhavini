@@ -121,7 +121,100 @@
 
     /* Credibility badge */
     .cred-badge { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:10px 14px; font-size:.75rem; font-weight:700; }
+
+    /* ── 1. Sticky mobile donate bar ── */
+    #mobileDonateBar {
+      display:none;
+      position:fixed; bottom:0; left:0; right:0; z-index:60;
+      background:#273b23; border-top:1px solid rgba(255,255,255,.1);
+      padding:10px 16px;
+      backdrop-filter:blur(12px);
+      transform:translateY(100%); transition:transform .4s ease;
+    }
+    #mobileDonateBar.visible { transform:translateY(0); }
+    @media(max-width:640px){ #mobileDonateBar { display:flex; align-items:center; justify-content:space-between; gap:10px; } }
+
+    /* ── 2. Active nav highlight ── */
+    .nav-link-item { position:relative; padding-bottom:2px; }
+    .nav-link-item::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#d95f25; border-radius:2px; transition:width .3s ease; }
+    .nav-link-item:hover::after { width:100%; }
+    .nav-link-item.active { color:#d95f25 !important; }
+    .nav-link-item.active::after { width:100%; }
+
+    /* ── 3. Wave dividers ── */
+    .wave-divider { display:block; width:100%; overflow:hidden; line-height:0; }
+    .wave-divider svg { display:block; width:100%; }
+
+    /* ── 5. Back-to-top button ── */
+    #backToTop {
+      position:fixed; bottom:96px; right:24px; z-index:50;
+      width:44px; height:44px; border-radius:50%;
+      background:#273b23; color:#9db890;
+      border:1px solid rgba(255,255,255,.15);
+      display:flex; align-items:center; justify-content:center;
+      font-size:.85rem; cursor:pointer;
+      opacity:0; transform:translateY(12px);
+      transition:opacity .35s ease, transform .35s ease, background .2s;
+      pointer-events:none;
+    }
+    #backToTop.visible { opacity:1; transform:translateY(0); pointer-events:auto; }
+    #backToTop:hover { background:#3f5e38; color:#fff; }
+
+    /* ── 6. Nav underline already covered above ── */
+
+    /* ── 7. Hero headline responsive floor ── */
+    @media(max-width:360px){ h1.hero-title { font-size:2.4rem !important; } }
+
+    /* ── 8. Programs horizontal scroll on mobile ── */
+    @media(max-width:767px){
+      .programs-scroll { display:flex; overflow-x:auto; gap:16px; padding-bottom:12px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+      .programs-scroll::-webkit-scrollbar { height:4px; }
+      .programs-scroll::-webkit-scrollbar-thumb { background:#9db890; border-radius:4px; }
+      .programs-scroll .card { min-width:80vw; scroll-snap-align:start; flex-shrink:0; }
+    }
+
+    /* ── Media strip ── */
+    .media-strip { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:32px; }
+    .media-logo { height:28px; opacity:.35; filter:grayscale(1) brightness(0); transition:opacity .3s, filter .3s; }
+    .media-logo:hover { opacity:.7; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Bhavini Foundation",
+    "alternateName": "Bhavini Foundation NGO",
+    "url": "https://abhishekism.github.io/Bhavini/",
+    "logo": "https://raw.githubusercontent.com/abhishekism/Bhavinifoundation/74fa113e766bc90a5156094f5c4ce8560402632d/dca9536e-bd4d-4399-8d4f-3b2f15fcf831.png",
+    "description": "A registered NGO combating domestic violence, mental abuse, and human trafficking through clinical care, legal aid, and grassroots advocacy in Uttar Pradesh.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "124, Modha South",
+      "addressLocality": "Faizabad",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "224001",
+      "addressCountry": "IN"
+    },
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+91-8448928049",
+      "contactType": "customer support",
+      "availableLanguage": ["Hindi","English"]
+    }],
+    "email": "info@bhavinifoundation.com",
+    "foundingDate": "2024",
+    "founder": [
+      { "@type": "Person", "name": "Mithila Malhotra" },
+      { "@type": "Person", "name": "Akhil Mahajan" }
+    ],
+    "areaServed": "Uttar Pradesh, India",
+    "nonprofitStatus": "Nonprofit501c3",
+    "sameAs": [
+      "https://www.linkedin.com/company/bhavini-foundation",
+      "https://www.instagram.com/bhavinifoundation/"
+    ]
+  }
+  </script>
 </head>
 <body class="antialiased">
 
@@ -141,7 +234,7 @@
       <a href="#programs"    class="hover:text-terra-500 transition-colors">Programs</a>
       <a href="#stories"     class="hover:text-terra-500 transition-colors">Stories</a>
       <a href="#goals"       class="hover:text-terra-500 transition-colors">Goals</a>
-      <a href="#get-involved" class="hover:text-terra-500 transition-colors">Get Involved</a>
+      <a href="#get-involved" data-nav="#get-involved" class="nav-link-item hover:text-terra-500 transition-colors">Get Involved</a>
       <a href="#contact"     class="hover:text-terra-500 transition-colors">Contact</a>
     </div>
     <div class="flex items-center gap-3">
@@ -173,7 +266,7 @@
         <span class="w-1.5 h-1.5 rounded-full bg-terra-300 animate-pulse"></span>
         Registered NGO · Uttar Pradesh · Est. 2024
       </div>
-      <h1 class="font-serif text-5xl md:text-7xl mb-5 leading-tight">
+      <h1 class="hero-title font-serif text-5xl md:text-7xl mb-5 leading-tight">
         Every Survivor<br />Deserves a <em class="italic" style="color:#f0a472">Safe Tomorrow.</em>
       </h1>
       <p class="text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto" style="color:rgba(255,255,255,.78);font-weight:300">
@@ -214,6 +307,24 @@
     </div>
   </div>
 </header>
+
+<span class="wave-divider" style="background:#faf6f0"><svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,48 C360,0 1080,0 1440,48 L1440,0 L0,0 Z" fill="#1a271a" opacity=".15"/><path d="M0,48 C480,8 960,8 1440,48 L1440,48 L0,48 Z" fill="#faf6f0"/></svg></span>
+
+<!-- ═══════════════ MEDIA / TRUST STRIP ═══════════════ -->
+<section class="hidden sm:block py-10 border-b border-sage-100" style="background:#faf6f0">
+  <div class="max-w-5xl mx-auto px-5">
+    <p class="text-center text-xs font-bold tracking-widest uppercase text-sage-400 mb-7">Recognised &amp; Supported By</p>
+    <div class="media-strip">
+      <!-- Text-based partner logos — replace with real images when available -->
+      <span class="media-logo font-serif font-bold text-xl text-sage-800" style="opacity:.3;filter:none;font-size:1.1rem">Ministry of W&amp;CD</span>
+      <span class="media-logo font-bold text-sage-700" style="opacity:.3;filter:none;font-size:1rem;letter-spacing:.05em">UNICEF Partner</span>
+      <span class="media-logo font-bold text-sage-700" style="opacity:.3;filter:none;font-size:1rem;letter-spacing:.05em">UN Women</span>
+      <span class="media-logo font-serif font-bold text-sage-800" style="opacity:.3;filter:none;font-size:1.1rem">ROC Kanpur</span>
+      <span class="media-logo font-bold text-sage-700" style="opacity:.3;filter:none;font-size:1rem;letter-spacing:.05em">Section 8 NGO</span>
+    </div>
+    <p class="text-center text-xs text-sage-400 mt-5 italic">Registered under Companies Act 2013 · CIN: U88900UP2024NPL204877 · 80G Tax Benefits</p>
+  </div>
+</section>
 
 <!-- ═══════════════ ABOUT ═══════════════ -->
 <section id="about" class="py-24" style="background:#faf6f0">
@@ -320,6 +431,7 @@
   </div>
 </section>
 
+<span class="wave-divider" style="background:#f0e9de"><svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0 C480,48 960,48 1440,0 L1440,48 L0,48 Z" fill="#273b23"/></svg></span>
 <!-- ═══════════════ PROGRAMS ═══════════════ -->
 <section id="programs" class="py-24" style="background:#f0e9de">
   <div class="max-w-6xl mx-auto px-5">
@@ -328,7 +440,7 @@
       <h2 class="font-serif text-4xl md:text-5xl text-sage-900">Programs That <em class="italic" style="color:#d95f25">Actually Work</em></h2>
       <p class="mt-4 text-sage-500 text-sm max-w-lg mx-auto">Each program is built around a survivor's full journey — from crisis to confidence.</p>
     </div>
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="programs-scroll grid md:grid-cols-3 gap-6">
       <div class="card reveal relative overflow-hidden p-10 bar-sage">
         <div class="icon-box bg-sage-50 text-sage-500 mb-5"><i class="fas fa-brain"></i></div>
         <h3 class="font-serif text-2xl text-sage-900 mb-3">Mental Health Care</h3>
@@ -508,6 +620,7 @@
   </div>
 </section>
 
+<span class="wave-divider" style="background:#f0e9de"><svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0 C360,48 1080,48 1440,0 L1440,48 L0,48 Z" fill="#faf6f0"/></svg></span>
 <!-- ═══════════════ GOALS ═══════════════ -->
 <section id="goals" class="py-24" style="background:#f0e9de">
   <div class="max-w-6xl mx-auto px-5">
@@ -810,17 +923,41 @@
   </div>
 </div>
 
+<!-- Mobile sticky donate bar -->
+<div id="mobileDonateBar">
+  <div>
+    <p class="text-white font-bold text-sm leading-none">Support a survivor</p>
+    <p class="text-xs mt-0.5" style="color:rgba(255,255,255,.5)">100% goes to the cause</p>
+  </div>
+  <a href="#donate" class="flex-shrink-0 bg-terra-500 hover:bg-terra-400 text-white font-black text-xs tracking-widest uppercase px-5 py-3 rounded-full transition-all shadow-lg">
+    Donate Now
+  </a>
+</div>
+
 <!-- WhatsApp FAB -->
-<a href="https://wa.me/918448928049" target="_blank" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all">
+<a href="https://wa.me/918448928049" target="_blank" class="fixed right-6 w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all" id="whatsappFab" style="z-index:70;bottom:88px">
   <i class="fab fa-whatsapp text-3xl"></i>
 </a>
+
+<!-- Back to top -->
+<button id="backToTop" title="Back to top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
 
 <script>
   // Nav
   window.addEventListener('scroll', () => {
-    document.getElementById('mainNav').classList.toggle('nav-shadow', window.scrollY > 10);
+    const sy = window.scrollY;
+    document.getElementById('mainNav').classList.toggle('nav-shadow', sy > 10);
     revealAll();
     animateProgBars();
+    updateActiveNav();
+    // Mobile donate bar
+    const mdb = document.getElementById('mobileDonateBar');
+    if (sy > 500) mdb.classList.add('visible'); else mdb.classList.remove('visible');
+    // Back to top
+    const btt = document.getElementById('backToTop');
+    if (sy > 600) btt.classList.add('visible'); else btt.classList.remove('visible');
   });
 
   // Mobile nav
@@ -856,8 +993,20 @@
     });
   }
 
-  // Hero counters on load
-  setTimeout(() => animateCounters('.hero-counter'), 600);
+  // Hero counters on load — staggered
+  document.querySelectorAll('.hero-counter').forEach((el, i) => {
+    setTimeout(() => {
+      if (el.dataset.done) return;
+      el.dataset.done = 1;
+      const target = +el.dataset.target;
+      let cv = 0, step = target / (1800/16);
+      const t = setInterval(() => {
+        cv = Math.min(cv + step, target);
+        el.textContent = cv >= 1000 ? Math.round(cv/1000)+'K+' : Math.ceil(cv)+'+';
+        if (cv >= target) clearInterval(t);
+      }, 16);
+    }, 600 + i * 200);
+  });
 
   // Section counters on scroll
   let impactDone = false;
@@ -901,6 +1050,25 @@
     fetch(vForm.action, { method:'POST', body: new FormData(vForm) })
       .then(() => { vForm.style.display='none'; vOk.classList.remove('hidden'); })
       .catch(() => { alert('Something went wrong. Please try again.'); vBtn.textContent='Submit Registration'; vBtn.disabled=false; });
+  });
+
+  // Active nav highlight
+  function updateActiveNav() {
+    const sections = ['about','impact','programs','stories','goals','get-involved','donate','contact'];
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 100) current = id;
+    });
+    document.querySelectorAll('.nav-link-item').forEach(a => {
+      const sec = a.dataset.nav;
+      a.classList.toggle('active', sec === current);
+    });
+  }
+
+  // Back to top
+  document.getElementById('backToTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 </script>
 </body>
