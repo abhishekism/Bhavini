@@ -712,35 +712,29 @@
         </div>
       </div>
 
-      <!-- Bank transfer -->
-      <div class="rounded-3xl p-8 flex flex-col" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">
-        <h3 class="font-serif text-xl mb-6" style="color:#faf6f0">Bank Transfer</h3>
-        <div class="space-y-4 mb-6 flex-1">
-          <div class="flex justify-between items-center py-3 border-b" style="border-color:rgba(255,255,255,.08)">
-            <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.4)">Bank</span>
-            <span class="text-sm font-bold" style="color:rgba(255,255,255,.85)">Axis Bank</span>
-          </div>
-          <div class="flex justify-between items-center py-3 border-b" style="border-color:rgba(255,255,255,.08)">
-            <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.4)">Account No.</span>
-            <span class="text-sm font-bold" style="color:rgba(255,255,255,.85)">924020037380123</span>
-          </div>
-          <div class="flex justify-between items-center py-3 border-b" style="border-color:rgba(255,255,255,.08)">
-            <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.4)">IFSC Code</span>
-            <span class="text-sm font-bold" style="color:#f0a472">UTIB0000000</span>
-          </div>
-          <div class="flex justify-between items-center py-3 border-b" style="border-color:rgba(255,255,255,.08)">
-            <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.4)">Account Name</span>
-            <span class="text-sm font-bold" style="color:rgba(255,255,255,.85)">Bhavini Foundation</span>
-          </div>
-          <div class="flex justify-between items-center py-3">
-            <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.4)">UPI ID</span>
-            <span class="text-sm font-bold" style="color:#f0a472">bhavini@okaxis</span>
-          </div>
+      <!-- Safe contact card -->
+      <div class="rounded-3xl p-8 flex flex-col gap-5" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">
+
+        <!-- Why UPI is safe note -->
+        <div class="rounded-2xl p-5" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)">
+          <p class="text-xs font-black uppercase tracking-widest mb-3" style="color:#9db890">Why We Use UPI</p>
+          <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.5)">UPI payments are instant, secure, and fully traceable. Every donation is verified by your bank and reflected directly in our registered account — no intermediaries, no risk.</p>
         </div>
+
+        <!-- Corporate / large donation -->
+        <div class="rounded-2xl p-5" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)">
+          <p class="text-xs font-black uppercase tracking-widest mb-2" style="color:#9db890">Corporate or Large Donations</p>
+          <p class="text-xs leading-relaxed mb-4" style="color:rgba(255,255,255,.5)">For NEFT / RTGS / cheque donations or CSR partnerships, reach out to us privately and we'll share verified bank details securely.</p>
+          <a href="mailto:info@bhavinifoundation.com?subject=Donation%20Enquiry" class="flex items-center gap-2 text-xs font-black tracking-widest uppercase py-3 px-4 rounded-xl transition-all" style="background:rgba(255,255,255,.08);color:#f0a472;border:1px solid rgba(240,164,114,.2)">
+            <i class="fas fa-envelope"></i> info@bhavinifoundation.com
+          </a>
+        </div>
+
         <!-- Trust badges -->
-        <div class="space-y-3">
+        <div class="space-y-3 mt-auto">
           <div class="cred-badge" style="color:rgba(255,255,255,.7)"><i class="fas fa-shield-alt text-sage-400"></i> Registered Section 8 Non-Profit</div>
           <div class="cred-badge" style="color:rgba(255,255,255,.7)"><i class="fas fa-file-alt text-sage-400"></i> CIN: U88900UP2024NPL204877</div>
+          <div class="cred-badge" style="color:rgba(255,255,255,.7)"><i class="fas fa-certificate text-sage-400"></i> 80G Certified · 50% Tax Deduction</div>
           <div class="cred-badge" style="color:rgba(255,255,255,.7)"><i class="fas fa-chart-bar text-sage-400"></i> Annual Impact Reports Published</div>
         </div>
       </div>
@@ -912,18 +906,15 @@
       <div><h3 class="font-serif text-xl text-sage-900">Support Our Vision</h3><p class="text-xs tracking-widest uppercase text-sage-400 mt-1">Mental Health &amp; Social Advocacy</p></div>
       <button onclick="toggleModal()" class="w-8 h-8 rounded-full bg-sage-100 hover:bg-terra-100 flex items-center justify-center text-sage-500 hover:text-terra-600 transition-colors"><i class="fas fa-times text-sm"></i></button>
     </div>
-    <div class="grid grid-cols-2 gap-5 mb-5">
-      <div class="rounded-2xl p-4 text-center border border-sage-100" style="background:#faf6f0">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=bhavini@okaxis" alt="QR Code" class="w-32 h-32 mx-auto rounded-xl mb-3 shadow-sm" />
-        <p class="text-terra-500 font-bold text-sm">bhavini@okaxis</p>
-        <p class="text-xs tracking-widest uppercase text-sage-400 mt-1">Scan via UPI</p>
+    <div class="mb-4">
+      <div class="rounded-2xl p-5 text-center border border-sage-100" style="background:#faf6f0">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=bhavini@okaxis" alt="QR Code" class="w-36 h-36 mx-auto rounded-xl mb-3 shadow-sm" />
+        <p class="text-terra-500 font-bold text-base">bhavini@okaxis</p>
+        <p class="text-xs tracking-widest uppercase text-sage-400 mt-1">GPay · PhonePe · Paytm · Any UPI app</p>
       </div>
-      <div class="space-y-3">
-        <h4 class="text-xs font-bold tracking-widest uppercase text-sage-400 border-b border-sage-100 pb-2">Bank Transfer</h4>
-        <div><p class="text-xs text-sage-400">Bank</p><p class="text-sm font-bold text-sage-800">Axis Bank</p></div>
-        <div><p class="text-xs text-sage-400">Account No.</p><p class="text-sm font-bold text-sage-800">924020037380123</p></div>
-        <div><p class="text-xs text-sage-400">IFSC</p><p class="text-sm font-bold text-terra-500">UTIB0000000</p></div>
-        <div><p class="text-xs text-sage-400">Name</p><p class="text-sm font-bold text-sage-800">Bhavini Foundation</p></div>
+      <div class="rounded-xl p-4 mb-1" style="background:#f2f5f0;border:1px solid #e2e9de">
+        <p class="text-xs font-bold text-sage-700 mb-1"><i class="fas fa-building mr-1 text-sage-400"></i> Corporate or Large Donation?</p>
+        <p class="text-xs text-sage-500 leading-relaxed">Email <a href="mailto:info@bhavinifoundation.com?subject=Donation%20Enquiry" class="font-bold text-terra-500 hover:underline">info@bhavinifoundation.com</a> — we'll share bank details securely.</p>
       </div>
     </div>
     <div class="flex items-center gap-3 rounded-2xl p-4 mb-4" style="background:#fdf4ef;border:1px solid rgba(217,95,37,.2)">
