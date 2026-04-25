@@ -160,6 +160,9 @@
     #backToTop.visible { opacity:1; transform:translateY(0); pointer-events:auto; }
     #backToTop:hover { background:#3f5e38; color:#fff; }
 
+    /* WhatsApp FAB — above donate bar on mobile, normal on desktop */
+    @media(min-width:641px){ #whatsappFab { bottom: 24px !important; } }
+
     /* ── 6. Nav underline already covered above ── */
 
     /* ── 7. Hero headline responsive floor ── */
@@ -232,13 +235,14 @@
       </div>
     </a>
     <div class="hidden lg:flex items-center gap-6 text-[11px] font-bold tracking-widest uppercase text-sage-600">
-      <a href="#about"       class="hover:text-terra-500 transition-colors">About</a>
-      <a href="#impact"      class="hover:text-terra-500 transition-colors">Impact</a>
-      <a href="#programs"    class="hover:text-terra-500 transition-colors">Programs</a>
-      <a href="#stories"     class="hover:text-terra-500 transition-colors">Stories</a>
-      <a href="#goals"       class="hover:text-terra-500 transition-colors">Goals</a>
-      <a href="#get-involved" data-nav="#get-involved" class="nav-link-item hover:text-terra-500 transition-colors">Get Involved</a>
-      <a href="#contact"     class="hover:text-terra-500 transition-colors">Contact</a>
+      <a href="#about" data-nav="about" class="nav-link-item hover:text-terra-500 transition-colors">About</a>
+      <a href="#impact" data-nav="impact" class="nav-link-item hover:text-terra-500 transition-colors">Impact</a>
+      <a href="#programs" data-nav="programs" class="nav-link-item hover:text-terra-500 transition-colors">Programs</a>
+      <a href="#stories" data-nav="stories" class="nav-link-item hover:text-terra-500 transition-colors">Stories</a>
+      <a href="#goals" data-nav="goals" class="nav-link-item hover:text-terra-500 transition-colors">Goals</a>
+      <a href="#get-involved" data-nav="get-involved" class="nav-link-item hover:text-terra-500 transition-colors">Get Involved</a>
+      <a href="#contact" data-nav="contact" class="nav-link-item hover:text-terra-500 transition-colors">Contact</a>
+      <a href="resources.html" class="inline-flex items-center gap-1.5 bg-terra-500 hover:bg-terra-600 text-white text-[10px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full transition-all shadow-sm"><i class="fas fa-book-open text-[9px]"></i> Resources</a>
     </div>
     <div class="flex items-center gap-3">
       <a href="#donate" class="hidden sm:inline-flex items-center gap-2 bg-sage-700 hover:bg-sage-800 text-white text-[10px] font-black tracking-widest uppercase px-5 py-2.5 rounded-full transition-all shadow-sm hover:shadow-md">
@@ -273,7 +277,7 @@
         Every Survivor<br />Deserves a <em class="italic" style="color:#f0a472">Safe Tomorrow.</em>
       </h1>
       <p class="text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto" style="color:rgba(255,255,255,.78);font-weight:300">
-        Bhavini Foundation stands between a woman and her abuser, a child and their exploiter, a survivor and their silence. We provide mental health care, legal aid, and community protection across Uttar Pradesh & Delhi NCR.
+        Bhavini Foundation stands between a woman and her abuser, a child and their exploiter, a survivor and their silence. We provide mental health care, legal aid, and community protection across Uttar Pradesh.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="#donate" class="inline-flex items-center justify-center gap-2 bg-terra-500 hover:bg-terra-600 text-white font-bold text-xs tracking-widest uppercase px-8 py-4 rounded-full transition-all shadow-xl" style="font-weight:800">
@@ -811,7 +815,7 @@
                   <h4 class="font-bold text-base" style="color:#faf6f0">Mithila Malhotra <i class="fab fa-linkedin text-xs ml-1 text-sage-500 group-hover:text-blue-400"></i></h4>
                 </a>
                 <p class="text-xs font-black tracking-widest uppercase mt-1 mb-2" style="color:#f0a472">Founder &amp; Director</p>
-                <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.5)">Championing gender equality and protection against domestic abuse across Uttar Pradesh & Delhi NCR.</p>
+                <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.5)">Championing gender equality and protection against domestic abuse across Uttar Pradesh.</p>
               </div>
             </div>
             <div class="h-px" style="background:rgba(255,255,255,.08)"></div>
@@ -847,7 +851,7 @@
             <div class="text-xs tracking-widest uppercase font-bold" style="color:rgba(255,255,255,.3)">Foundation</div>
           </div>
         </div>
-        <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.4)">Healing Minds. Protecting Lives. Transforming Communities across Uttar Pradesh since & Delhi NCR 2024.</p>
+        <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,.4)">Healing Minds. Protecting Lives. Transforming Communities across Uttar Pradesh since 2024.</p>
         <div class="flex gap-3">
           <a href="https://www.linkedin.com/company/bhavini-foundation" target="_blank" class="w-9 h-9 rounded-xl flex items-center justify-center text-sm transition-all hover:bg-terra-600 hover:text-white" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)"><i class="fab fa-linkedin"></i></a>
           <a href="https://www.instagram.com/bhavinifoundation/" target="_blank" class="w-9 h-9 rounded-xl flex items-center justify-center text-sm transition-all hover:bg-terra-600 hover:text-white" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)"><i class="fab fa-instagram"></i></a>
@@ -865,6 +869,7 @@
           <li><a href="#goals"        class="hover:text-white transition-colors">Our Goals</a></li>
           <li><a href="#get-involved" class="hover:text-white transition-colors">Get Involved</a></li>
           <li><a href="#donate"       class="hover:text-white transition-colors">Donate</a></li>
+          <li><a href="resources.html" class="hover:text-white transition-colors">Resources &amp; Help</a></li>
         </ul>
       </div>
       <!-- Contact -->
@@ -1063,9 +1068,8 @@
       const el = document.getElementById(id);
       if (el && el.getBoundingClientRect().top <= 100) current = id;
     });
-    document.querySelectorAll('.nav-link-item').forEach(a => {
-      const sec = a.dataset.nav;
-      a.classList.toggle('active', sec === current);
+    document.querySelectorAll('.nav-link-item[data-nav]').forEach(a => {
+      a.classList.toggle('active', a.dataset.nav === current);
     });
   }
 
