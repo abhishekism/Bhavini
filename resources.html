@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources & Help | Bhavini Foundation</title>
+  <meta name="description" content="Know your rights, find helplines, read survivor guides, and understand how Bhavini Foundation uses your support." />
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/abhishekism/Bhavinifoundation/74fa113e766bc90a5156094f5c4ce8560402632d/dca9536e-bd4d-4399-8d4f-3b2f15fcf831.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans:  ['Nunito', 'sans-serif'],
+          },
+          colors: {
+            sage:  { 50:'#f2f5f0',100:'#e2e9de',200:'#c4d3bc',300:'#9db890',400:'#739f68',500:'#547a4a',600:'#3f5e38',700:'#324a2c',800:'#273b23',900:'#1a271a' },
+            terra: { 50:'#fdf4ef',100:'#fbe4d3',200:'#f6c9a7',300:'#f0a472',400:'#e87b44',500:'#d95f25',600:'#b8481a',700:'#923716' },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; background: #faf6f0; color: #1a271a; }
+
+    /* Reveal */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s}
+
+    /* Cards */
+    .card { background:#fff; border:1px solid #e2e9de; border-radius:24px; transition:transform .3s ease, box-shadow .3s ease; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 20px 48px rgba(26,39,26,.10); }
+
+    /* Nav */
+    .nav-link-item { position:relative; padding-bottom:2px; }
+    .nav-link-item::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#d95f25; border-radius:2px; transition:width .3s ease; }
+    .nav-link-item:hover::after { width:100%; }
+
+    /* Hero banner */
+    .page-hero {
+      background:
+        linear-gradient(160deg, rgba(10,22,8,.82) 0%, rgba(30,45,18,.6) 60%, rgba(55,28,10,.78) 100%),
+        url('https://images.unsplash.com/photo-1692269725827-699e04a11cdf?q=80&w=1600&auto=format&fit=crop') center 30%/cover no-repeat;
+    }
+    @media(min-width:768px){ .page-hero { background-attachment: fixed; } }
+
+    /* Helpline card */
+    .helpline-card { border-radius:20px; padding:20px 24px; display:flex; align-items:center; gap:16px; border:1px solid; transition:transform .25s ease, box-shadow .25s ease; }
+    .helpline-card:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(26,39,26,.1); }
+
+    /* Rights accordion */
+    .acc-item { border:1px solid #e2e9de; border-radius:16px; overflow:hidden; margin-bottom:10px; transition:box-shadow .2s; }
+    .acc-item:hover { box-shadow:0 4px 20px rgba(26,39,26,.06); }
+    .acc-header { display:flex; justify-content:space-between; align-items:center; padding:18px 24px; cursor:pointer; background:#fff; user-select:none; }
+    .acc-header h4 { font-weight:700; font-size:.95rem; color:#1a271a; }
+    .acc-body { display:none; padding:0 24px 20px; background:#fff; border-top:1px solid #f2f5f0; }
+    .acc-body.open { display:block; }
+    .acc-icon { width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:.7rem; transition:transform .3s, background .2s; }
+    .acc-item.active .acc-icon { transform:rotate(45deg); background:#fdf4ef; color:#d95f25; }
+
+    /* Guide cards */
+    .guide-card { background:#fff; border:1px solid #e2e9de; border-radius:20px; padding:28px; display:flex; align-items:flex-start; gap:16px; transition:transform .3s, box-shadow .3s; cursor:pointer; }
+    .guide-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(26,39,26,.1); }
+
+    /* Fund bar */
+    .fund-bar { height:10px; border-radius:999px; background:#e2e9de; overflow:hidden; margin-top:8px; }
+    .fund-fill { height:100%; border-radius:999px; width:0; transition:width 1.4s ease; }
+
+    /* FAQ */
+    .faq-item { border-bottom:1px solid #e2e9de; }
+    .faq-q { display:flex; justify-content:space-between; align-items:center; padding:18px 4px; cursor:pointer; gap:12px; }
+    .faq-q p { font-weight:700; font-size:.95rem; color:#1a271a; }
+    .faq-a { display:none; padding:0 4px 18px; font-size:.88rem; color:#547a4a; line-height:1.75; }
+    .faq-a.open { display:block; }
+
+    /* Volunteer handbook */
+    .handbook-step { display:flex; gap:16px; align-items:flex-start; padding:20px 0; border-bottom:1px solid #e2e9de; }
+    .handbook-step:last-child { border-bottom:none; }
+    .h-num { width:36px; height:36px; border-radius:10px; background:#f2f5f0; color:#547a4a; font-weight:900; font-size:.9rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'DM Serif Display',serif; }
+
+    /* Back to top */
+    #backToTop { position:fixed; bottom:24px; right:24px; z-index:50; width:44px; height:44px; border-radius:50%; background:#273b23; color:#9db890; border:1px solid rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center; font-size:.85rem; cursor:pointer; opacity:0; transform:translateY(12px); transition:opacity .35s ease, transform .35s ease, background .2s; pointer-events:none; }
+    #backToTop.visible { opacity:1; transform:translateY(0); pointer-events:auto; }
+    #backToTop:hover { background:#3f5e38; color:#fff; }
+
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-thumb { background:#9db890; border-radius:4px; }
+
+    /* Section label */
+    .section-label { font-size:.65rem; font-weight:800; letter-spacing:.3em; text-transform:uppercase; color:#547a4a; margin-bottom:10px; display:block; }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- ═══════ NAV ═══════ -->
+<nav id="mainNav" class="sticky top-0 z-50 border-b border-sage-100 transition-shadow duration-300" style="background:rgba(250,246,240,.94);backdrop-filter:blur(18px)">
+  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3 group">
+      <img src="https://raw.githubusercontent.com/abhishekism/Bhavinifoundation/74fa113e766bc90a5156094f5c4ce8560402632d/dca9536e-bd4d-4399-8d4f-3b2f15fcf831.png" alt="Bhavini Foundation" class="h-9 w-9 rounded-full object-cover ring-2 ring-sage-200 group-hover:ring-terra-300 transition-all" />
+      <div>
+        <div class="font-serif text-xl leading-none text-sage-800">Bhavini</div>
+        <div class="text-[9px] font-bold tracking-widest uppercase text-sage-400">Foundation</div>
+      </div>
+    </a>
+    <div class="hidden lg:flex items-center gap-6 text-[11px] font-bold tracking-widest uppercase text-sage-600">
+      <a href="index.html#about"        class="nav-link-item hover:text-terra-500 transition-colors">About</a>
+      <a href="#helplines"              class="nav-link-item hover:text-terra-500 transition-colors">Helplines</a>
+      <a href="#rights"                 class="nav-link-item hover:text-terra-500 transition-colors">Know Your Rights</a>
+      <a href="#guides"                 class="nav-link-item hover:text-terra-500 transition-colors">Guides</a>
+      <a href="#faq"                    class="nav-link-item hover:text-terra-500 transition-colors">FAQ</a>
+      <a href="index.html#donate"       class="nav-link-item hover:text-terra-500 transition-colors">Donate</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="index.html#donate" class="hidden sm:inline-flex items-center gap-2 bg-sage-700 hover:bg-sage-800 text-white text-[10px] font-black tracking-widest uppercase px-5 py-2.5 rounded-full transition-all shadow-sm">
+        <i class="fas fa-heart text-terra-300"></i> Donate
+      </a>
+      <button id="burgerBtn" class="lg:hidden p-2 rounded-lg hover:bg-sage-100 transition-colors">
+        <i class="fas fa-bars text-sage-700"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-sage-100 px-5 py-5 space-y-4" style="background:#faf6f0">
+    <a href="index.html"          onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">← Back to Home</a>
+    <a href="#helplines"          onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Helplines</a>
+    <a href="#rights"             onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Know Your Rights</a>
+    <a href="#guides"             onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Guides</a>
+    <a href="#transparency"       onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Transparency</a>
+    <a href="#volunteer-handbook" onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">Volunteer Handbook</a>
+    <a href="#faq"                onclick="closeMob()" class="block text-sm font-bold tracking-widest uppercase text-sage-700 hover:text-terra-500">FAQ</a>
+  </div>
+</nav>
+
+<!-- ═══════ PAGE HERO ═══════ -->
+<header class="page-hero py-24 px-5 text-white text-center">
+  <div class="max-w-2xl mx-auto">
+    <div class="inline-flex items-center gap-2 mb-7 px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)">
+      <span class="w-1.5 h-1.5 rounded-full bg-terra-300 animate-pulse"></span>
+      Resources & Support
+    </div>
+    <h1 class="font-serif text-4xl md:text-6xl mb-5 leading-tight">
+      Help Is Here.<br /><em class="italic" style="color:#f0a472">You Are Not Alone.</em>
+    </h1>
+    <p class="text-base md:text-lg leading-relaxed max-w-xl mx-auto" style="color:rgba(255,255,255,.75);font-weight:300">
+      Crisis helplines, legal rights, survivor guides, volunteer handbook, and full transparency on how your support is used.
+    </p>
+    <!-- Quick jump links -->
+    <div class="flex flex-wrap justify-center gap-3 mt-8">
+      <a href="#helplines"          class="bg-terra-500 hover:bg-terra-600 text-white text-[10px] font-black tracking-widest uppercase px-5 py-2.5 rounded-full transition-all shadow-lg">Emergency Helplines</a>
+      <a href="#rights"             class="text-white text-[10px] font-black tracking-widest uppercase px-5 py-2.5 rounded-full transition-all border hover:bg-white hover:text-sage-800" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)">Know Your Rights</a>
+      <a href="#guides"             class="text-white text-[10px] font-black tracking-widest uppercase px-5 py-2.5 rounded-full transition-all border hover:bg-white hover:text-sage-800" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)">Survivor Guides</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════ EMERGENCY HELPLINES ═══════ -->
+<section id="helplines" class="py-20" style="background:#faf6f0">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Immediate Support</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-sage-900">Emergency <em class="italic" style="color:#d95f25">Helplines</em></h2>
+      <p class="mt-3 text-sage-500 text-sm max-w-md mx-auto">All helplines are free to call. Available 24/7. Your call is confidential.</p>
+    </div>
+
+    <!-- Bhavini own helpline — featured -->
+    <div class="reveal mb-8 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 text-white" style="background:#273b23">
+      <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0" style="background:rgba(255,255,255,.1)">
+        <i class="fas fa-phone-alt" style="color:#f0a472"></i>
+      </div>
+      <div class="flex-1 text-center md:text-left">
+        <p class="text-xs font-black tracking-widest uppercase mb-1" style="color:#9db890">Bhavini Foundation — Our Helpline</p>
+        <h3 class="font-serif text-2xl mb-1">Talk to Us Directly</h3>
+        <p class="text-sm" style="color:rgba(255,255,255,.6)">Our trained counsellors are available to listen, guide, and connect you with support. No judgement. No fees.</p>
+      </div>
+      <div class="flex flex-col gap-3 flex-shrink-0 w-full md:w-auto">
+        <a href="tel:+918448928049" class="flex items-center justify-center gap-2 bg-terra-500 hover:bg-terra-400 text-white font-black text-sm tracking-wide px-7 py-3.5 rounded-full transition-all shadow-lg">
+          <i class="fas fa-phone"></i> +91 8448928049
+        </a>
+        <a href="tel:+918448928452" class="flex items-center justify-center gap-2 text-white font-bold text-sm px-7 py-3 rounded-full transition-all border" style="border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.07)">
+          <i class="fas fa-phone"></i> +91 8448928452
+        </a>
+      </div>
+    </div>
+
+    <!-- National helplines grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="tel:181" class="helpline-card reveal" style="background:#fff;border-color:#e2e9de">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0 bg-terra-50 text-terra-500"><i class="fas fa-female"></i></div>
+        <div class="flex-1">
+          <p class="font-black text-2xl text-sage-900 leading-none">181</p>
+          <p class="font-bold text-xs text-sage-700 mt-1">Women's Helpline</p>
+          <p class="text-xs text-sage-400 mt-0.5">Ministry of WCD · 24/7 · Free</p>
+        </div>
+        <i class="fas fa-phone-alt text-sage-300 text-sm"></i>
+      </a>
+      <a href="tel:1098" class="helpline-card reveal d1" style="background:#fff;border-color:#e2e9de">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0 bg-sage-50 text-sage-500"><i class="fas fa-child"></i></div>
+        <div class="flex-1">
+          <p class="font-black text-2xl text-sage-900 leading-none">1098</p>
+          <p class="font-bold text-xs text-sage-700 mt-1">Childline India</p>
+          <p class="text-xs text-sage-400 mt-0.5">Children in distress · 24/7 · Free</p>
+        </div>
+        <i class="fas fa-phone-alt text-sage-300 text-sm"></i>
+      </a>
+      <a href="tel:112" class="helpline-card reveal d2" style="background:#fff;border-color:#e2e9de">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#fff3f3;color:#e53e3e"><i class="fas fa-shield-alt"></i></div>
+        <div class="flex-1">
+          <p class="font-black text-2xl text-sage-900 leading-none">112</p>
+          <p class="font-bold text-xs text-sage-700 mt-1">Police Emergency</p>
+          <p class="text-xs text-sage-400 mt-0.5">Immediate danger · 24/7 · Free</p>
+        </div>
+        <i class="fas fa-phone-alt text-sage-300 text-sm"></i>
+      </a>
+      <a href="tel:7827170170" class="helpline-card reveal" style="background:#fff;border-color:#e2e9de">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0 bg-terra-50 text-terra-500"><i class="fas fa-heart"></i></div>
+        <div class="flex-1">
+          <p class="font-black text-2xl text-sage-900 leading-none">iCall</p>
+          <p class="font-bold text-xs text-sage-700 mt-1">Mental Health Support</p>
+          <p class="text-xs text-sage-400 mt-0.5">9152987821 · Mon–Sat · TISS</p>
+        </div>
+        <i class="fas fa-phone-alt text-sage-300 text-sm"></i>
+      </a>
+      <a href="tel:1800111565" class="helpline-card reveal d1" style="background:#fff;border-color:#e2e9de">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0 bg-sage-50 text-sage-500"><i class="fas fa-hands-helping"></i></div>
+        <div class="flex-1">
+          <p class="font-black text-2xl text-sage-900 leading-none">1800-111-565</p>
+          <p class="font-bold text-xs text-sage-700 mt-1">Anti-Trafficking Helpline</p>
+          <p class="text-xs text-sage-400 mt-0.5">MHA · Toll-free · 24/7</p>
+        </div>
+        <i class="fas fa-phone-alt text-sage-300 text-sm"></i>
+      </a>
+      <a href="tel:14567" class="helpline-card reveal d2" style="background:#fff;border-color:#e2e9de">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#f0fff4;color:#276749"><i class="fas fa-user-md"></i></div>
+        <div class="flex-1">
+          <p class="font-black text-2xl text-sage-900 leading-none">14567</p>
+          <p class="font-bold text-xs text-sage-700 mt-1">Elder Helpline</p>
+          <p class="text-xs text-sage-400 mt-0.5">Senior citizens · 24/7 · Free</p>
+        </div>
+        <i class="fas fa-phone-alt text-sage-300 text-sm"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ KNOW YOUR RIGHTS ═══════ -->
+<section id="rights" class="py-20" style="background:#f0e9de">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Legal Empowerment</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-sage-900">Know Your <em class="italic" style="color:#547a4a">Rights</em></h2>
+      <p class="mt-3 text-sage-500 text-sm max-w-md mx-auto">Laws that protect you — explained simply, in plain language.</p>
+    </div>
+
+    <div class="space-y-3 reveal">
+      <!-- POCSO -->
+      <div class="acc-item" data-acc="0">
+        <div class="acc-header" onclick="toggleAcc(0)">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-terra-50 text-terra-500 flex items-center justify-center text-sm flex-shrink-0"><i class="fas fa-child"></i></div>
+            <h4>POCSO Act, 2012 — Protection of Children from Sexual Offences</h4>
+          </div>
+          <div class="acc-icon bg-sage-50 text-sage-500"><i class="fas fa-plus text-xs"></i></div>
+        </div>
+        <div class="acc-body" id="acc-body-0">
+          <div class="pt-4 grid md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-sm text-sage-600 leading-relaxed mb-3">POCSO protects children under 18 from sexual abuse, harassment, and pornography. It mandates child-friendly procedures and strict punishment for offenders.</p>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Any sexual act with a child is a criminal offence regardless of consent</li>
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Police must record statements in a child-friendly environment</li>
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Child's identity must be kept confidential throughout the process</li>
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Failure to report known abuse is also a punishable offence</li>
+              </ul>
+            </div>
+            <div class="bg-sage-50 rounded-2xl p-5">
+              <p class="text-xs font-black uppercase tracking-widest text-sage-500 mb-3">If you suspect abuse:</p>
+              <ol class="space-y-2">
+                <li class="flex items-start gap-2 text-sm text-sage-700"><span class="w-5 h-5 rounded-full bg-sage-200 text-sage-600 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>Call 1098 (Childline) or 112 immediately</li>
+                <li class="flex items-start gap-2 text-sm text-sage-700"><span class="w-5 h-5 rounded-full bg-sage-200 text-sage-600 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>Contact Bhavini Foundation for guidance</li>
+                <li class="flex items-start gap-2 text-sm text-sage-700"><span class="w-5 h-5 rounded-full bg-sage-200 text-sage-600 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>File FIR at your local police station</li>
+                <li class="flex items-start gap-2 text-sm text-sage-700"><span class="w-5 h-5 rounded-full bg-sage-200 text-sage-600 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>Request a Special Juvenile Police Unit officer</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DV Act -->
+      <div class="acc-item" data-acc="1">
+        <div class="acc-header" onclick="toggleAcc(1)">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-sage-50 text-sage-500 flex items-center justify-center text-sm flex-shrink-0"><i class="fas fa-home"></i></div>
+            <h4>Domestic Violence Act, 2005 — Protection of Women</h4>
+          </div>
+          <div class="acc-icon bg-sage-50 text-sage-500"><i class="fas fa-plus text-xs"></i></div>
+        </div>
+        <div class="acc-body" id="acc-body-1">
+          <div class="pt-4 grid md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-sm text-sage-600 leading-relaxed mb-3">This Act protects women from physical, emotional, sexual, verbal, and economic abuse by any family member or partner. It gives women the right to stay in their home.</p>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Right to reside in the shared household, even without ownership</li>
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Right to protection orders, residence orders, and monetary relief</li>
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Covers physical, verbal, emotional, and economic abuse</li>
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Court can issue emergency protection orders within 3 days</li>
+              </ul>
+            </div>
+            <div class="bg-terra-50 rounded-2xl p-5">
+              <p class="text-xs font-black uppercase tracking-widest text-terra-500 mb-3">How to file a complaint:</p>
+              <ol class="space-y-2">
+                <li class="flex items-start gap-2 text-sm text-sage-700"><span class="w-5 h-5 rounded-full bg-terra-100 text-terra-600 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>Contact a Protection Officer (available at District Court)</li>
+                <li class="flex items-start gap-2 text-sm text-sage-700"><span class="w-5 h-5 rounded-full bg-terra-100 text-terra-600 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>File a Domestic Incident Report (DIR)</li>
+                <li class="flex items-start gap-2 text-sm text-sage-700"><span class="w-5 h-5 rounded-full bg-terra-100 text-terra-600 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>Approach Magistrate for Protection Order</li>
+                <li class="flex items-start gap-2 text-sm text-sage-700"><span class="w-5 h-5 rounded-full bg-terra-100 text-terra-600 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>Call Bhavini — we'll accompany you through the process</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dowry -->
+      <div class="acc-item" data-acc="2">
+        <div class="acc-header" onclick="toggleAcc(2)">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-terra-50 text-terra-500 flex items-center justify-center text-sm flex-shrink-0"><i class="fas fa-gavel"></i></div>
+            <h4>Dowry Prohibition Act, 1961 & IPC Section 498A</h4>
+          </div>
+          <div class="acc-icon bg-sage-50 text-sage-500"><i class="fas fa-plus text-xs"></i></div>
+        </div>
+        <div class="acc-body" id="acc-body-2">
+          <div class="pt-4">
+            <p class="text-sm text-sage-600 leading-relaxed mb-4">Giving or taking dowry is a criminal offence. IPC 498A protects married women from cruelty, harassment for dowry, and abetment of suicide by in-laws.</p>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-sage-50 rounded-xl p-4"><p class="text-xs font-bold text-sage-700 mb-2">Dowry Prohibition Act</p><p class="text-xs text-sage-500 leading-relaxed">Punishment: up to 5 years imprisonment and fine of ₹15,000 or the value of dowry, whichever is higher.</p></div>
+              <div class="bg-terra-50 rounded-xl p-4"><p class="text-xs font-bold text-terra-700 mb-2">IPC Section 498A</p><p class="text-xs text-sage-500 leading-relaxed">Cruelty by husband or relatives — imprisonment up to 3 years + fine. Cognisable and non-bailable.</p></div>
+              <div class="bg-sage-50 rounded-xl p-4"><p class="text-xs font-bold text-sage-700 mb-2">IPC Section 304B</p><p class="text-xs text-sage-500 leading-relaxed">Dowry death — if a woman dies within 7 years of marriage under suspicious circumstances, minimum 7 years imprisonment.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trafficking -->
+      <div class="acc-item" data-acc="3">
+        <div class="acc-header" onclick="toggleAcc(3)">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-sage-50 text-sage-500 flex items-center justify-center text-sm flex-shrink-0"><i class="fas fa-shield-alt"></i></div>
+            <h4>ITPA & IPC Section 370 — Anti-Human Trafficking Laws</h4>
+          </div>
+          <div class="acc-icon bg-sage-50 text-sage-500"><i class="fas fa-plus text-xs"></i></div>
+        </div>
+        <div class="acc-body" id="acc-body-3">
+          <div class="pt-4">
+            <p class="text-sm text-sage-600 leading-relaxed mb-4">IPC Section 370 criminalises all forms of human trafficking — for forced labour, sexual exploitation, or organ harvesting. Trafficking of children carries stricter punishment.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Trafficker: minimum 7 years, up to life imprisonment</li>
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Trafficking of children: minimum 10 years imprisonment</li>
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Victims have right to free legal aid and rehabilitation</li>
+                <li class="flex items-start gap-2 text-sm text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Victim's statement recorded in private with female officer</li>
+              </ul>
+              <div class="bg-sage-50 rounded-xl p-4">
+                <p class="text-xs font-black uppercase tracking-widest text-sage-500 mb-2">Report Trafficking</p>
+                <p class="text-sm text-sage-600 leading-relaxed">Call <strong>1800-111-565</strong> (anti-trafficking helpline) or contact Bhavini Foundation immediately. We coordinate with police, NGOs, and shelter homes for rescue and rehabilitation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SURVIVOR GUIDES ═══════ -->
+<section id="guides" class="py-20" style="background:#faf6f0">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Self-Help Resources</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-sage-900">Survivor <em class="italic" style="color:#d95f25">Guides</em></h2>
+      <p class="mt-3 text-sage-500 text-sm max-w-md mx-auto">Plain-language guides to help you understand, protect yourself, and take action.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="guide-card reveal" onclick="openGuide('abuse')">
+        <div class="w-12 h-12 rounded-xl bg-terra-50 text-terra-500 flex items-center justify-center text-xl flex-shrink-0"><i class="fas fa-eye"></i></div>
+        <div>
+          <h3 class="font-bold text-sage-900 mb-1">Recognising Abuse</h3>
+          <p class="text-xs text-sage-500 leading-relaxed">Physical, emotional, verbal, and financial — learn the signs before it escalates.</p>
+          <p class="text-xs font-black uppercase tracking-widest text-terra-500 mt-3">Read Guide <i class="fas fa-arrow-right ml-1 text-xs"></i></p>
+        </div>
+      </div>
+      <div class="guide-card reveal d1" onclick="openGuide('complaint')">
+        <div class="w-12 h-12 rounded-xl bg-sage-50 text-sage-500 flex items-center justify-center text-xl flex-shrink-0"><i class="fas fa-file-alt"></i></div>
+        <div>
+          <h3 class="font-bold text-sage-900 mb-1">How to File a Complaint</h3>
+          <p class="text-xs text-sage-500 leading-relaxed">Step-by-step guide to filing an FIR, protection order, or domestic violence complaint.</p>
+          <p class="text-xs font-black uppercase tracking-widest text-sage-500 mt-3">Read Guide <i class="fas fa-arrow-right ml-1 text-xs"></i></p>
+        </div>
+      </div>
+      <div class="guide-card reveal d2" onclick="openGuide('goodtouch')">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#fef9ee;color:#b45309"><i class="fas fa-child"></i></div>
+        <div>
+          <h3 class="font-bold text-sage-900 mb-1">Good Touch / Bad Touch</h3>
+          <p class="text-xs text-sage-500 leading-relaxed">A guide for parents and teachers to educate children about body safety and consent.</p>
+          <p class="text-xs font-black uppercase tracking-widest mt-3" style="color:#b45309">Read Guide <i class="fas fa-arrow-right ml-1 text-xs"></i></p>
+        </div>
+      </div>
+      <div class="guide-card reveal" onclick="openGuide('menstrual')">
+        <div class="w-12 h-12 rounded-xl bg-terra-50 text-terra-500 flex items-center justify-center text-xl flex-shrink-0"><i class="fas fa-heartbeat"></i></div>
+        <div>
+          <h3 class="font-bold text-sage-900 mb-1">Menstrual Health Basics</h3>
+          <p class="text-xs text-sage-500 leading-relaxed">Hygiene, health, and breaking stigma — a simple guide for girls and women.</p>
+          <p class="text-xs font-black uppercase tracking-widest text-terra-500 mt-3">Read Guide <i class="fas fa-arrow-right ml-1 text-xs"></i></p>
+        </div>
+      </div>
+      <div class="guide-card reveal d1" onclick="openGuide('safety')">
+        <div class="w-12 h-12 rounded-xl bg-sage-50 text-sage-500 flex items-center justify-center text-xl flex-shrink-0"><i class="fas fa-lock"></i></div>
+        <div>
+          <h3 class="font-bold text-sage-900 mb-1">Personal Safety Planning</h3>
+          <p class="text-xs text-sage-500 leading-relaxed">How to create a safety plan if you're in a dangerous home — what to keep ready, who to call.</p>
+          <p class="text-xs font-black uppercase tracking-widest text-sage-500 mt-3">Read Guide <i class="fas fa-arrow-right ml-1 text-xs"></i></p>
+        </div>
+      </div>
+      <div class="guide-card reveal d2" onclick="openGuide('mental')">
+        <div class="w-12 h-12 rounded-xl bg-sage-50 text-sage-500 flex items-center justify-center text-xl flex-shrink-0"><i class="fas fa-brain"></i></div>
+        <div>
+          <h3 class="font-bold text-sage-900 mb-1">Understanding Trauma</h3>
+          <p class="text-xs text-sage-500 leading-relaxed">What trauma does to the mind and body, and how professional counselling helps you heal.</p>
+          <p class="text-xs font-black uppercase tracking-widest text-sage-500 mt-3">Read Guide <i class="fas fa-arrow-right ml-1 text-xs"></i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TRANSPARENCY / IMPACT REPORT ═══════ -->
+<section id="transparency" class="py-20" style="background:#273b23">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <span class="text-[11px] font-black tracking-widest uppercase block mb-3" style="color:#9db890">Annual Impact Report 2024–25</span>
+      <h2 class="font-serif text-4xl md:text-5xl" style="color:#faf6f0">Where Your Money <em class="italic" style="color:#f0a472">Goes</em></h2>
+      <p class="mt-3 text-sm max-w-md mx-auto" style="color:rgba(255,255,255,.5)">We believe in full transparency. Every rupee is accounted for.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Fund utilisation -->
+      <div class="reveal rounded-3xl p-8" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">
+        <h3 class="font-serif text-xl mb-7" style="color:#faf6f0">Fund Utilisation</h3>
+        <div class="space-y-5">
+          <div>
+            <div class="flex justify-between items-center mb-1"><span class="text-sm font-bold" style="color:rgba(255,255,255,.8)">Direct Program Costs</span><span class="text-sm font-black" style="color:#f0a472">68%</span></div>
+            <div class="fund-bar"><div class="fund-fill" data-width="68" style="background:linear-gradient(90deg,#d95f25,#f0a472)"></div></div>
+            <p class="text-xs mt-1" style="color:rgba(255,255,255,.35)">Counselling, legal aid, workshops, rehabilitation</p>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-1"><span class="text-sm font-bold" style="color:rgba(255,255,255,.8)">Community Outreach</span><span class="text-sm font-black" style="color:#f0a472">18%</span></div>
+            <div class="fund-bar"><div class="fund-fill" data-width="18" style="background:linear-gradient(90deg,#547a4a,#9db890)"></div></div>
+            <p class="text-xs mt-1" style="color:rgba(255,255,255,.35)">School programs, awareness drives, camps</p>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-1"><span class="text-sm font-bold" style="color:rgba(255,255,255,.8)">Administration</span><span class="text-sm font-black" style="color:#f0a472">9%</span></div>
+            <div class="fund-bar"><div class="fund-fill" data-width="9" style="background:linear-gradient(90deg,#324a2c,#547a4a)"></div></div>
+            <p class="text-xs mt-1" style="color:rgba(255,255,255,.35)">Operations, staff salaries, overheads</p>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-1"><span class="text-sm font-bold" style="color:rgba(255,255,255,.8)">Future Shelter Fund</span><span class="text-sm font-black" style="color:#f0a472">5%</span></div>
+            <div class="fund-bar"><div class="fund-fill" data-width="5" style="background:linear-gradient(90deg,#b8481a,#d95f25)"></div></div>
+            <p class="text-xs mt-1" style="color:rgba(255,255,255,.35)">Reserved for shelter home construction</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key achievements -->
+      <div class="reveal d1 rounded-3xl p-8" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">
+        <h3 class="font-serif text-xl mb-7" style="color:#faf6f0">2024–25 Achievements</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-2xl p-5 text-center" style="background:rgba(255,255,255,.04)">
+            <div class="font-serif text-3xl font-bold" style="color:#f0a472">12K+</div>
+            <div class="text-xs mt-1 tracking-widest uppercase" style="color:rgba(255,255,255,.45)">Counselling Sessions</div>
+          </div>
+          <div class="rounded-2xl p-5 text-center" style="background:rgba(255,255,255,.04)">
+            <div class="font-serif text-3xl font-bold" style="color:#f0a472">25K+</div>
+            <div class="text-xs mt-1 tracking-widest uppercase" style="color:rgba(255,255,255,.45)">Legal Cases Aided</div>
+          </div>
+          <div class="rounded-2xl p-5 text-center" style="background:rgba(255,255,255,.04)">
+            <div class="font-serif text-3xl font-bold" style="color:#f0a472">16K+</div>
+            <div class="text-xs mt-1 tracking-widest uppercase" style="color:rgba(255,255,255,.45)">Children Educated</div>
+          </div>
+          <div class="rounded-2xl p-5 text-center" style="background:rgba(255,255,255,.04)">
+            <div class="font-serif text-3xl font-bold" style="color:#f0a472">20K+</div>
+            <div class="text-xs mt-1 tracking-widest uppercase" style="color:rgba(255,255,255,.45)">Lives Transformed</div>
+          </div>
+        </div>
+        <div class="mt-5 rounded-2xl p-4 flex items-center gap-3" style="background:rgba(240,164,114,.1);border:1px solid rgba(240,164,114,.2)">
+          <i class="fas fa-certificate" style="color:#f0a472"></i>
+          <p class="text-xs font-bold" style="color:#f0a472">Registered Section 8 Non-Profit · CIN: U88900UP2024NPL204877 · 80G Tax Benefits</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ VOLUNTEER HANDBOOK ═══════ -->
+<section id="volunteer-handbook" class="py-20" style="background:#f0e9de">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">For Volunteers</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-sage-900">Volunteer <em class="italic" style="color:#547a4a">Handbook</em></h2>
+      <p class="mt-3 text-sage-500 text-sm max-w-md mx-auto">Everything you need to know before you start — from training to code of conduct.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card reveal p-8">
+        <h3 class="font-serif text-xl text-sage-900 mb-6 border-l-4 border-terra-400 pl-4">Your Journey as a Volunteer</h3>
+        <div>
+          <div class="handbook-step">
+            <div class="h-num">1</div>
+            <div><h4 class="font-bold text-sage-800 text-sm mb-1">Registration & Screening</h4><p class="text-xs text-sage-500 leading-relaxed">Submit your registration form. Our team will review your skills and availability and get back within 3–5 working days.</p></div>
+          </div>
+          <div class="handbook-step">
+            <div class="h-num">2</div>
+            <div><h4 class="font-bold text-sage-800 text-sm mb-1">Orientation Session</h4><p class="text-xs text-sage-500 leading-relaxed">Attend a 2-hour online orientation covering our mission, the communities we serve, code of conduct, and confidentiality guidelines.</p></div>
+          </div>
+          <div class="handbook-step">
+            <div class="h-num">3</div>
+            <div><h4 class="font-bold text-sage-800 text-sm mb-1">Role-Specific Training</h4><p class="text-xs text-sage-500 leading-relaxed">Depending on your role — legal aid, counselling support, awareness campaigns, or social media — you'll receive focused training from our team.</p></div>
+          </div>
+          <div class="handbook-step">
+            <div class="h-num">4</div>
+            <div><h4 class="font-bold text-sage-800 text-sm mb-1">Field Assignment</h4><p class="text-xs text-sage-500 leading-relaxed">Get assigned to a project team. Work alongside experienced staff on real programs in communities, schools, or legal support contexts.</p></div>
+          </div>
+          <div class="handbook-step">
+            <div class="h-num">5</div>
+            <div><h4 class="font-bold text-sage-800 text-sm mb-1">Ongoing Support & Recognition</h4><p class="text-xs text-sage-500 leading-relaxed">Monthly volunteer meetups, impact updates, certificates of appreciation, and opportunities to grow into leadership roles.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-5">
+        <div class="card reveal d1 p-7">
+          <h4 class="font-bold text-sage-900 text-sm uppercase tracking-wide mb-4 flex items-center gap-2"><i class="fas fa-users text-sage-400"></i> Available Volunteer Roles</h4>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 py-2 border-b border-sage-50"><i class="fas fa-circle text-[6px] text-terra-400"></i><div><p class="text-sm font-bold text-sage-800">Mentorship</p><p class="text-xs text-sage-400">Guide survivors in rebuilding confidence and independence</p></div></div>
+            <div class="flex items-center gap-3 py-2 border-b border-sage-50"><i class="fas fa-circle text-[6px] text-terra-400"></i><div><p class="text-sm font-bold text-sage-800">Legal Advocacy</p><p class="text-xs text-sage-400">Support legal teams in documentation and court processes</p></div></div>
+            <div class="flex items-center gap-3 py-2 border-b border-sage-50"><i class="fas fa-circle text-[6px] text-terra-400"></i><div><p class="text-sm font-bold text-sage-800">Health Support</p><p class="text-xs text-sage-400">Run health camps and hygiene workshops in communities</p></div></div>
+            <div class="flex items-center gap-3 py-2 border-b border-sage-50"><i class="fas fa-circle text-[6px] text-terra-400"></i><div><p class="text-sm font-bold text-sage-800">Awareness Campaigns</p><p class="text-xs text-sage-400">Conduct school workshops and community awareness sessions</p></div></div>
+            <div class="flex items-center gap-3 py-2"><i class="fas fa-circle text-[6px] text-terra-400"></i><div><p class="text-sm font-bold text-sage-800">Social Media & Outreach</p><p class="text-xs text-sage-400">Amplify our mission through content and digital campaigns</p></div></div>
+          </div>
+        </div>
+        <div class="card reveal d2 p-7">
+          <h4 class="font-bold text-sage-900 text-sm uppercase tracking-wide mb-4 flex items-center gap-2"><i class="fas fa-shield-alt text-sage-400"></i> Code of Conduct</h4>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-xs text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Maintain strict confidentiality of all survivor information</li>
+            <li class="flex items-start gap-2 text-xs text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Always act in the best interest of the person you're supporting</li>
+            <li class="flex items-start gap-2 text-xs text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Do not photograph or record survivors without explicit consent</li>
+            <li class="flex items-start gap-2 text-xs text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Report any concerns immediately to the Programme Lead</li>
+            <li class="flex items-start gap-2 text-xs text-sage-600"><i class="fas fa-check-circle text-sage-400 mt-0.5"></i>Treat every person with dignity, regardless of background</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center reveal">
+      <a href="index.html#get-involved" class="inline-flex items-center gap-2 bg-sage-700 hover:bg-sage-800 text-white font-black text-xs tracking-widest uppercase px-8 py-4 rounded-full transition-all shadow-lg">
+        <i class="fas fa-hands-helping"></i> Register as a Volunteer
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FAQ ═══════ -->
+<section id="faq" class="py-20" style="background:#faf6f0">
+  <div class="max-w-3xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <span class="section-label">Common Questions</span>
+      <h2 class="font-serif text-4xl md:text-5xl text-sage-900">Frequently Asked <em class="italic" style="color:#d95f25">Questions</em></h2>
+    </div>
+    <div class="reveal space-y-0 border border-sage-100 rounded-3xl overflow-hidden bg-white px-6">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(0)">
+          <p>How do I get help from Bhavini Foundation?</p>
+          <i class="fas fa-plus text-sage-400 text-sm flex-shrink-0 transition-transform" id="faq-icon-0"></i>
+        </div>
+        <div class="faq-a" id="faq-0">Call us on +91 8448928049 or +91 8448928452, or email info@bhavinifoundation.com. Our team will assess your situation and connect you with the right support — counselling, legal aid, or shelter — without any fees or judgement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(1)">
+          <p>Is my information kept confidential?</p>
+          <i class="fas fa-plus text-sage-400 text-sm flex-shrink-0 transition-transform" id="faq-icon-1"></i>
+        </div>
+        <div class="faq-a" id="faq-1">Absolutely. All personal information shared with Bhavini Foundation is strictly confidential. We never share your details without your explicit consent, except in cases of immediate danger to life where legal obligations apply.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(2)">
+          <p>How can I refer someone in need?</p>
+          <i class="fas fa-plus text-sage-400 text-sm flex-shrink-0 transition-transform" id="faq-icon-2"></i>
+        </div>
+        <div class="faq-a" id="faq-2">Call our helpline directly. You can refer a friend, neighbour, or family member by sharing their situation with our team. We'll reach out sensitively and offer support. You don't need the person's permission to make a referral — our team will handle it carefully.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(3)">
+          <p>How are donations used?</p>
+          <i class="fas fa-plus text-sage-400 text-sm flex-shrink-0 transition-transform" id="faq-icon-3"></i>
+        </div>
+        <div class="faq-a" id="faq-3">68% goes directly to program costs (counselling, legal aid, workshops), 18% to community outreach, 9% to administration, and 5% to our future shelter home fund. We publish annual impact reports. All donations are eligible for 50% tax deduction under Section 80G.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(4)">
+          <p>Do you offer services in Hindi?</p>
+          <i class="fas fa-plus text-sage-400 text-sm flex-shrink-0 transition-transform" id="faq-icon-4"></i>
+        </div>
+        <div class="faq-a" id="faq-4">Yes. All our services, workshops, and helpline support are available in Hindi. We work primarily in Uttar Pradesh and understand the linguistic and cultural needs of the communities we serve.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(5)">
+          <p>Can organisations partner with Bhavini Foundation?</p>
+          <i class="fas fa-plus text-sage-400 text-sm flex-shrink-0 transition-transform" id="faq-icon-5"></i>
+        </div>
+        <div class="faq-a" id="faq-5">Yes. We actively seek partnerships with schools, hospitals, corporations (for CSR), and NGOs working in aligned areas. Email us at info@bhavinifoundation.com with "Partnership Enquiry" in the subject line and we'll get back within 2 working days.</div>
+      </div>
+      <div class="faq-item" style="border-bottom:none">
+        <div class="faq-q" onclick="toggleFaq(6)">
+          <p>How do I get a tax exemption certificate for my donation?</p>
+          <i class="fas fa-plus text-sage-400 text-sm flex-shrink-0 transition-transform" id="faq-icon-6"></i>
+        </div>
+        <div class="faq-a" id="faq-6">After making a donation, email your transaction details and PAN number to info@bhavinifoundation.com. We'll issue an 80G receipt within 7 working days, which you can use to claim 50% tax deduction on your donation amount.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA STRIP ═══════ -->
+<section class="py-16 text-center px-5" style="background:#1a271a">
+  <div class="max-w-2xl mx-auto reveal">
+    <h2 class="font-serif text-3xl md:text-4xl mb-4" style="color:#faf6f0">Still have questions? <em class="italic" style="color:#f0a472">We're here.</em></h2>
+    <p class="text-sm mb-8" style="color:rgba(255,255,255,.5)">Call us, email us, or WhatsApp — our team responds within 24 hours.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="tel:+918448928049" class="inline-flex items-center justify-center gap-2 bg-terra-500 hover:bg-terra-600 text-white font-black text-xs tracking-widest uppercase px-8 py-4 rounded-full transition-all shadow-xl">
+        <i class="fas fa-phone-alt"></i> Call Now
+      </a>
+      <a href="https://wa.me/918448928049" target="_blank" class="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-black text-xs tracking-widest uppercase px-8 py-4 rounded-full transition-all shadow-xl">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us
+      </a>
+      <a href="index.html" class="inline-flex items-center justify-center gap-2 font-black text-xs tracking-widest uppercase px-8 py-4 rounded-full transition-all border hover:bg-white hover:text-sage-900" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="py-12 px-5 border-t" style="background:#0f1a0f;border-color:rgba(255,255,255,.07);color:rgba(255,255,255,.4)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="flex items-center gap-3">
+      <img src="https://raw.githubusercontent.com/abhishekism/Bhavinifoundation/74fa113e766bc90a5156094f5c4ce8560402632d/dca9536e-bd4d-4399-8d4f-3b2f15fcf831.png" alt="Bhavini Foundation" class="h-9 w-9 rounded-full object-cover bg-white p-0.5" />
+      <div>
+        <div class="font-serif text-base leading-none" style="color:#f0a472">Bhavini Foundation</div>
+        <div class="text-xs mt-0.5" style="color:rgba(255,255,255,.3)">Healing Minds. Protecting Lives.</div>
+      </div>
+    </div>
+    <div class="text-xs tracking-widest uppercase text-center" style="color:rgba(255,255,255,.2)">© 2026 Bhavini Foundation · CIN: U88900UP2024NPL204877</div>
+    <div class="flex gap-3">
+      <a href="https://www.linkedin.com/company/bhavini-foundation" target="_blank" class="w-9 h-9 rounded-xl flex items-center justify-center text-sm transition-all hover:bg-terra-600 hover:text-white" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/bhavinifoundation/" target="_blank" class="w-9 h-9 rounded-xl flex items-center justify-center text-sm transition-all hover:bg-terra-600 hover:text-white" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/918448928049" class="w-9 h-9 rounded-xl flex items-center justify-center text-sm transition-all hover:bg-green-600 hover:text-white" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/918448928049" target="_blank" class="fixed right-6 w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all" style="z-index:70;bottom:24px">
+  <i class="fab fa-whatsapp text-3xl"></i>
+</a>
+
+<!-- Guide Modal -->
+<div id="guideModal" class="fixed inset-0 z-50 flex items-center justify-center p-4" style="visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s;background:rgba(15,26,15,.92);backdrop-filter:blur(8px)">
+  <div class="bg-white rounded-3xl w-full max-w-lg max-h-[80vh] overflow-y-auto shadow-2xl">
+    <div class="sticky top-0 bg-white px-8 pt-7 pb-4 border-b border-sage-100 flex justify-between items-start z-10">
+      <div>
+        <h3 class="font-serif text-2xl text-sage-900" id="guideTitle">Guide</h3>
+        <p class="text-xs text-sage-400 tracking-widest uppercase mt-1">Bhavini Foundation · Resource Guide</p>
+      </div>
+      <button onclick="closeGuide()" class="w-8 h-8 rounded-full bg-sage-100 hover:bg-terra-100 flex items-center justify-center text-sage-500 hover:text-terra-600 transition-colors flex-shrink-0 ml-4"><i class="fas fa-times text-sm"></i></button>
+    </div>
+    <div class="px-8 py-6 text-sm text-sage-600 leading-relaxed" id="guideContent"></div>
+  </div>
+</div>
+
+<script>
+  // Nav shadow
+  window.addEventListener('scroll', () => {
+    const sy = window.scrollY;
+    document.getElementById('mainNav').style.boxShadow = sy > 10 ? '0 2px 24px rgba(26,39,26,.1)' : '';
+    revealAll();
+    animateFundBars();
+    document.getElementById('backToTop').classList.toggle('visible', sy > 600);
+  });
+
+  // Mobile menu
+  document.getElementById('burgerBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('hidden'));
+  function closeMob() { document.getElementById('mobileMenu').classList.add('hidden'); }
+
+  // Reveal
+  function revealAll() {
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
+    });
+  }
+  revealAll();
+
+  // Accordion
+  function toggleAcc(i) {
+    const body = document.getElementById('acc-body-' + i);
+    const item = document.querySelector('[data-acc="' + i + '"]');
+    const isOpen = body.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.acc-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.acc-item').forEach(it => it.classList.remove('active'));
+    if (!isOpen) { body.classList.add('open'); item.classList.add('active'); }
+  }
+
+  // FAQ
+  function toggleFaq(i) {
+    const ans = document.getElementById('faq-' + i);
+    const icon = document.getElementById('faq-icon-' + i);
+    const isOpen = ans.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('[id^="faq-icon-"]').forEach(ic => { ic.classList.remove('fa-minus'); ic.classList.add('fa-plus'); ic.style.transform = ''; });
+    if (!isOpen) {
+      ans.classList.add('open');
+      icon.classList.remove('fa-plus'); icon.classList.add('fa-minus');
+      icon.style.transform = 'rotate(0deg)';
+    }
+  }
+
+  // Fund bars
+  let fundDone = false;
+  function animateFundBars() {
+    if (fundDone) return;
+    document.querySelectorAll('.fund-fill').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight - 40 && !el.dataset.done) {
+        el.dataset.done = 1; el.style.width = el.dataset.width + '%'; fundDone = true;
+      }
+    });
+  }
+
+  // Guide modal content
+  const guides = {
+    abuse: {
+      title: 'Recognising Abuse',
+      content: `<p class="mb-4 font-bold text-sage-800">Abuse takes many forms. Recognising it is the first step to safety.</p>
+      <h4 class="font-bold text-sage-800 mb-2 mt-4">Physical Abuse</h4>
+      <p class="mb-3">Hitting, slapping, kicking, pushing, burning, or any physical harm. Signs include unexplained injuries, flinching, or wearing clothing to hide bruises.</p>
+      <h4 class="font-bold text-sage-800 mb-2 mt-4">Emotional / Verbal Abuse</h4>
+      <p class="mb-3">Constant criticism, humiliation, threatening, controlling behaviour, isolation from family and friends, monitoring phone/movements.</p>
+      <h4 class="font-bold text-sage-800 mb-2 mt-4">Financial Abuse</h4>
+      <p class="mb-3">Controlling access to money, preventing employment, taking away earnings, forcing you to ask for basic needs.</p>
+      <h4 class="font-bold text-sage-800 mb-2 mt-4">Sexual Abuse</h4>
+      <p class="mb-3">Any unwanted sexual contact or coercion. This includes within marriage — marital rape is a criminal offence.</p>
+      <div class="mt-5 p-4 rounded-xl bg-terra-50 border border-terra-100">
+        <p class="font-bold text-terra-700 text-xs uppercase tracking-wide mb-2">If you recognise any of these signs — call us:</p>
+        <a href="tel:+918448928049" class="font-black text-terra-600 text-lg">+91 8448928049</a>
+      </div>`
+    },
+    complaint: {
+      title: 'How to File a Complaint',
+      content: `<p class="mb-4">Filing a complaint can feel overwhelming. Here is a simple step-by-step guide.</p>
+      <div class="space-y-4">
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-sage-100 text-sage-700 font-black text-sm flex items-center justify-center flex-shrink-0">1</span><div><p class="font-bold text-sage-800">Go to your nearest police station</p><p class="text-sage-500 text-xs mt-0.5">You can file an FIR (First Information Report) at any police station. You have the right to get a copy of your FIR for free.</p></div></div>
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-sage-100 text-sage-700 font-black text-sm flex items-center justify-center flex-shrink-0">2</span><div><p class="font-bold text-sage-800">Request a female officer</p><p class="text-sage-500 text-xs mt-0.5">You have the right to have your statement recorded by a female officer in a private setting.</p></div></div>
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-sage-100 text-sage-700 font-black text-sm flex items-center justify-center flex-shrink-0">3</span><div><p class="font-bold text-sage-800">Keep evidence</p><p class="text-sage-500 text-xs mt-0.5">Photographs of injuries, screenshots of threatening messages, medical records, and witness names all strengthen your case.</p></div></div>
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-sage-100 text-sage-700 font-black text-sm flex items-center justify-center flex-shrink-0">4</span><div><p class="font-bold text-sage-800">Call Bhavini Foundation</p><p class="text-sage-500 text-xs mt-0.5">We can accompany you to the police station, help with legal documentation, and connect you with a free lawyer.</p></div></div>
+        <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-sage-100 text-sage-700 font-black text-sm flex items-center justify-center flex-shrink-0">5</span><div><p class="font-bold text-sage-800">Apply for a Protection Order</p><p class="text-sage-500 text-xs mt-0.5">Under the Domestic Violence Act, you can get an emergency Protection Order from a Magistrate within 3 days.</p></div></div>
+      </div>`
+    },
+    goodtouch: {
+      title: 'Good Touch / Bad Touch — For Parents & Teachers',
+      content: `<p class="mb-4">Teaching children about body safety is one of the most powerful ways to protect them.</p>
+      <h4 class="font-bold text-sage-800 mb-2">What to Teach Children</h4>
+      <ul class="space-y-2 mb-4">
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i><span>Your body belongs to you. Nobody has the right to touch you without your permission.</span></li>
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i><span>Private parts (covered by a swimsuit) are private. Nobody should touch or see them except a doctor with a parent present.</span></li>
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i><span>If someone touches you in a way that feels wrong — even a family member — it is never your fault.</span></li>
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i><span>Secrets about touching are never okay. Always tell a trusted adult.</span></li>
+      </ul>
+      <h4 class="font-bold text-sage-800 mb-2">Signs a Child May Be Experiencing Abuse</h4>
+      <ul class="space-y-1 mb-4 text-sage-500">
+        <li>• Sudden change in behaviour or mood</li><li>• Fear of a specific person or place</li><li>• Age-inappropriate sexual knowledge or behaviour</li><li>• Nightmares, bedwetting, withdrawal</li>
+      </ul>
+      <div class="p-4 rounded-xl bg-terra-50 border border-terra-100">
+        <p class="font-bold text-terra-700 text-xs mb-1">Contact Bhavini Foundation to arrange a workshop for your school:</p>
+        <a href="mailto:info@bhavinifoundation.com" class="text-terra-600 font-bold text-sm">info@bhavinifoundation.com</a>
+      </div>`
+    },
+    menstrual: {
+      title: 'Menstrual Health Basics',
+      content: `<p class="mb-4">Menstruation is a normal, healthy part of life. Understanding it removes fear and stigma.</p>
+      <h4 class="font-bold text-sage-800 mb-2">Basic Facts</h4>
+      <ul class="space-y-2 mb-4">
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i>Periods typically start between ages 10–15 and are a sign of good health.</li>
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i>A cycle usually lasts 21–35 days. Bleeding lasts 3–7 days.</li>
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i>Mild cramps are common. Severe pain should be discussed with a doctor.</li>
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i>Exercise, rest, and a healthy diet help manage symptoms.</li>
+      </ul>
+      <h4 class="font-bold text-sage-800 mb-2">Hygiene Tips</h4>
+      <ul class="space-y-1 mb-4 text-sage-500">
+        <li>• Change pads or tampons every 4–6 hours</li><li>• Wash hands before and after changing</li><li>• Dispose of used pads hygienically, wrapped in paper</li><li>• Reusable cloth pads are a sustainable, affordable option</li>
+      </ul>
+      <div class="p-4 rounded-xl bg-sage-50 border border-sage-100">
+        <p class="text-sage-600 text-xs">Bhavini Foundation runs free menstrual hygiene workshops in schools and communities. <a href="mailto:info@bhavinifoundation.com" class="font-bold text-sage-700">Contact us</a> to arrange one near you.</p>
+      </div>`
+    },
+    safety: {
+      title: 'Personal Safety Planning',
+      content: `<p class="mb-4">A safety plan helps you think ahead so you can act quickly in a dangerous situation.</p>
+      <h4 class="font-bold text-sage-800 mb-2">Keep These Ready</h4>
+      <ul class="space-y-2 mb-4">
+        <li class="flex gap-2"><i class="fas fa-suitcase text-terra-400 mt-0.5 text-xs"></i>A bag with: ID/Aadhaar, some cash, medicines, phone charger, a change of clothes for you and your children.</li>
+        <li class="flex gap-2"><i class="fas fa-phone text-terra-400 mt-0.5 text-xs"></i>A list of trusted people and helpline numbers memorised or saved secretly.</li>
+        <li class="flex gap-2"><i class="fas fa-map text-terra-400 mt-0.5 text-xs"></i>Know your nearest police station, hospital, and shelter location.</li>
+      </ul>
+      <h4 class="font-bold text-sage-800 mb-2">If You Need to Leave Quickly</h4>
+      <ul class="space-y-1 mb-4 text-sage-500">
+        <li>• Have a code word with a trusted friend that means "call police"</li><li>• Know which door/window to use to leave quickly</li><li>• Keep phone charged and emergency numbers accessible</li>
+      </ul>
+      <div class="p-4 rounded-xl bg-terra-50 border border-terra-100">
+        <p class="font-bold text-terra-700 text-xs mb-1">Call us to create a personalised safety plan with our counsellors:</p>
+        <a href="tel:+918448928049" class="text-terra-600 font-black text-lg">+91 8448928049</a>
+      </div>`
+    },
+    mental: {
+      title: 'Understanding Trauma',
+      content: `<p class="mb-4">Trauma is a natural response to an overwhelming experience. It is not weakness — it is a survival mechanism.</p>
+      <h4 class="font-bold text-sage-800 mb-2">Common Trauma Responses</h4>
+      <ul class="space-y-2 mb-4">
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i>Flashbacks, nightmares, or intrusive memories of the event</li>
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i>Feeling numb, detached, or "not real"</li>
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i>Avoiding places, people, or situations that trigger memories</li>
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i>Hypervigilance — always feeling on edge or in danger</li>
+        <li class="flex gap-2"><i class="fas fa-check-circle text-sage-400 mt-0.5 text-xs"></i>Difficulty sleeping, concentrating, or trusting others</li>
+      </ul>
+      <h4 class="font-bold text-sage-800 mb-2">How Counselling Helps</h4>
+      <p class="mb-3 text-sage-500">Professional counselling provides a safe space to process what happened, understand your responses, and gradually rebuild a sense of safety and control. It is not about "forgetting" — it's about healing.</p>
+      <div class="p-4 rounded-xl bg-sage-50 border border-sage-100">
+        <p class="text-sage-600 text-xs">Our trained counsellors offer free, confidential sessions. <strong class="text-sage-800">You don't have to be in crisis to reach out.</strong> Call <a href="tel:+918448928049" class="font-bold text-sage-700">+91 8448928049</a> to book a session.</p>
+      </div>`
+    }
+  };
+
+  function openGuide(key) {
+    const g = guides[key];
+    document.getElementById('guideTitle').textContent = g.title;
+    document.getElementById('guideContent').innerHTML = g.content;
+    const modal = document.getElementById('guideModal');
+    modal.style.visibility = 'visible'; modal.style.opacity = '1';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeGuide() {
+    const modal = document.getElementById('guideModal');
+    modal.style.opacity = '0';
+    setTimeout(() => { modal.style.visibility = 'hidden'; document.body.style.overflow = ''; }, 300);
+  }
+  document.getElementById('guideModal').addEventListener('click', function(e) {
+    if (e.target === this) closeGuide();
+  });
+</script>
+</body>
+</html>
